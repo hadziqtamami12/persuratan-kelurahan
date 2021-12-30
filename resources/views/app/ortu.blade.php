@@ -75,7 +75,7 @@
                         <a href="javascript:;" id="button-tambah-ibu" data-toggle="modal" data-target="#tambah-data-ibu"
                         class="btn btn-primary shadow-md mr-2 mb-5">Tambah Data Ibu</a>
                         <a href="javascript:;" id="button-edit-ibu" data-toggle="modal" data-target="#ibu-edit" data-id=""
-                        class="btn btn-primary shadow-md mr-2 mb-5 ibuedit invisible">Tambah Data Ibu</a>
+                        class="btn btn-primary shadow-md mr-2 mb-5 ibuedit invisible">Edit Data Ibu</a>
                         <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="text-3xl font-bold leading-8">Data Ibu</div>
@@ -627,6 +627,8 @@
                             $("#button-tambah-ibu").addClass('btn-secondary');
                             $("#button-edit-ibu").removeClass('invisible');
                             $("#button-edit-ibu").addClass('visible');
+                            $("#button-edit-ibu").attr("data-id", data.id);
+
                             
                         }
                     });
@@ -667,6 +669,7 @@
                         dataType: "JSON",
                         success: function(data)
                         {
+                            console.log(data);
                             $('#ibu-update-id').val(data.id);
                             $('#ibu-edit-1').val(data.nama);
                             $('#ibu-edit-2').val(data.nik);

@@ -11,6 +11,7 @@ use App\Http\Controllers\{
     PasanganController,
     PengantarNikahController,
     PermohonanNikahController,
+    PersetujuanNikahController,
     
 
 };
@@ -86,6 +87,14 @@ Route::middleware('auth')->group(function() {
         Route::POST('permohonanupdate', [PermohonanNikahController::class, 'permohonanupdate'])->name('permohonanupdate');
         Route::get('permohonandelete/{id}', [PermohonanNikahController::class, 'destroy'])->name('permohonandelete');
         Route::get('permohonancetak/{id}', [PermohonanNikahController::class, 'permohonancetak'])->name('permohonancetak');
+
+        //Data Persetujuan Nikah Manage
+        Route::get('persetujuan', [PersetujuanNikahController::class, 'index'])->name('persetujuan');
+        Route::POST('persetujuanadd', [PersetujuanNikahController::class, 'persetujuanadd'])->name('persetujuanadd');
+        Route::get('persetujuanedit', [PersetujuanNikahController::class, 'persetujuanedit'])->name('persetujuanedit');
+        Route::POST('persetujuanupdate', [PersetujuanNikahController::class, 'persetujuanupdate'])->name('persetujuanupdate');
+        Route::get('persetujuandelete/{id}', [PersetujuanNikahController::class, 'destroy'])->name('persetujuandelete');
+        Route::get('persetujuancetak/{id}', [PersetujuanNikahController::class, 'persetujuancetak'])->name('persetujuancetak');
 
     });
     Route::group(['middleware'=>['auth','role:su']],function(){

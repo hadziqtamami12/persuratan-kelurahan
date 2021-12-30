@@ -123,6 +123,11 @@ class OrtuController extends Controller
         $ayah = Ayah::where('user_id', $request->user_id)->first();
         echo json_encode($ayah);
     }
+    public function ibuget(Request $request)
+    {
+        $ibu = Ibu::where('user_id', $request->user_id)->first();
+        echo json_encode($ibu);
+    }
 
     public function ayahedit(Request $request)
     {

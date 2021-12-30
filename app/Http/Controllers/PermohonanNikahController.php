@@ -125,7 +125,7 @@ class permohonanNikahController extends Controller
         
         view()->share('app.permohonancetak', ['permohonan'=> $permohonan,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu]);
         $pdf = PDF::loadView('app.permohonancetak', ['permohonan'=> $permohonan,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu])->setPaper('a4', 'potrait');
-        return $pdf->stream();
+        return $pdf->stream('Surat Permohonan Nikah.pdf');
     }
 
     /**

@@ -12,7 +12,7 @@
         body{
             font-family : "Times New Roman", Times, serif;
             line-height: 1;
-            font-size : 15px;
+            font-size : 17px;
             margin : 50px;
             margin-top: 0;
 
@@ -79,6 +79,15 @@
         .line-height-3{
             line-height : 3;
         }
+        .line-height-5{
+            line-height : 5;
+        }
+        .line-height-6{
+            line-height : 6;
+        }
+        .line-height-7{
+            line-height : 7;
+        }
         
         .text-right{
             text-align: right;
@@ -127,6 +136,7 @@
             return 'hari tidak valid';
             }
         }
+
     ?>
 
 
@@ -140,7 +150,7 @@
             <div class="w-70">
                 <table>
                     <tr>
-                        <td class="w-43">Perihal : </td>
+                        <td class="w-43">Perihal</td>
                         <td>:</td>
                         <td class="w-50">Permohonan kehendak pekawinan</td>
                     </tr>
@@ -161,273 +171,56 @@
             <p class="line-height-0">di......................................................................................</p>
             <p>Dengan hormat, kami mengajukan permohonan kehendak perkawinan untuk atas nama kami calon suami: <b>{{ $keluarga->jenkel == 'laki-laki' ? $keluarga->nama : $pasangan->nama  }}</b>
                dengan calon istri <b>{{ $pasangan->jenkel == 'perempuan' ? $pasangan->nama : $keluarga->nama  }}</b>
-Pada hari {{ hari(date('l', strtotime($permohonan->tanggal))) }} tanggal .......................................... bertempat di ………..................................
-.......................................................................................................................</p>
-            <div class="box">
-                <!-- <div class="box-left w-100">
-                    <?php $no = 1; ?>
-                    <table>
-                        <tr>
-                            <td class="w-5">{{ $no++ }}</td>
-                            <td>Nama</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td class="w-5">{{ $no++ }}</td>
-                            <td>Nomor Induk Kependudukan (NIK)</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td class="w-5">{{ $no++ }}</td>
-                            <td>Jenis Kelamin</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td class="w-5">{{ $no++ }}</td>
-                            <td>Tempat dan tanggal lahir</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td class="w-5">{{ $no++ }}</td>
-                            <td>Kewarganegaraan</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td class="w-5">{{ $no++ }}</td>
-                            <td>Agama</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td class="w-5">{{ $no++ }}</td>
-                            <td>Pekerjaan</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td class="w-5">{{ $no++ }}</td>
-                            <td>Alamat</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td class="w-5">{{ $no++ }}</td>
-                            <td>Status Perkawinan</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td class="w-5">{{ $no++ }}</td>
-                            <td>Nama istri / suami terdahulu</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                        </tr>
-                        <tr class="line-height-2">
-                            <td colspan="3">Adalah benar anak dari perkawinan seorang pria :</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Nama Lengkap dan alias</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Nomor Induk Kependudukan (NIK)</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Jenis Kelamin</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Tempat dan tanggal lahir</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Kewarganegaraan</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Agama</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Pekerjaan</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Alamat</td>
-                            <td>:</td>
-                        </tr>
-                        <tr class="line-height-2">
-                            <td colspan="3">dengan seorang wanita :</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Nama Lengkap dan alias</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Nomor Induk Kependudukan (NIK)</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Jenis Kelamin</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Tempat dan tanggal lahir</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Kewarganegaraan</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Agama</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Pekerjaan</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Alamat</td>
-                            <td>:</td>
-                        </tr>
-                        <tr class="line-height-2">
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr class="mt-10">
-                            <td colspan="5">Demikian, surat pengantar ini dibuat dengan mengingat sumpah jabatan dan untuk dipergunakan
-        sebagaimana mestinya.</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="box-right w-50 ml-auto">
-                    <table>
-                        <tr>
-                            <td> {{ $keluarga->nama ? $keluarga->nama : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $keluarga->nik ? $keluarga->nik : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $keluarga->jenkel ? $keluarga->jenkel : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $keluarga->tempat_lahir . ', ' . $keluarga->tempat_lahir ? $keluarga->tempat_lahir . ', ' . $keluarga->tempat_lahir : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $keluarga->kewarganegaraan ? $keluarga->kewarganegaraan : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $keluarga->agama ? $keluarga->agama : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $keluarga->pekerjaan ? $keluarga->pekerjaan : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $keluarga->alamat ? $keluarga->alamat : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $keluarga->status_nikah ?  $keluarga->status_nikah : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> &nbsp; </td>
-                            <td> &nbsp; </td>
-                            <td> &nbsp; </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                        </tr>
-                        <tr class="line-height-2">
-                            <td> &nbsp; </td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ayah->nama ? $ayah->nama : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ayah->nik ? $ayah->nik : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ayah->jenkel ? $ayah->jenkel : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ayah->tempat_lahir . ', ' . $ayah->tempat_lahir ? $ayah->tempat_lahir . ', ' . $ayah->tempat_lahir : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ayah->kewarganegaraan ? $ayah->kewarganegaraan : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ayah->agama ? $ayah->agama : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ayah->pekerjaan ? $ayah->pekerjaan : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ayah->alamat ? $ayah->alamat : 'belum diisi' }}</td>
-                        </tr>
-                        <tr class="line-height-2">
-                            <td> &nbsp; </td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ibu->nama ? $ibu->nama : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ibu->nik ? $ibu->nik : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ibu->jenkel ? $ibu->jenkel : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ibu->tempat_lahir . ', ' . $ibu->tempat_lahir ? $ibu->tempat_lahir . ', ' . $ibu->tempat_lahir : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ibu->kewarganegaraan ? $ibu->kewarganegaraan : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ibu->agama ? $ibu->agama : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ibu->pekerjaan ? $ibu->pekerjaan : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ibu->alamat ? $ibu->alamat : 'belum diisi' }}</td>
-                        </tr>
-                        <tr class="line-height-2">
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr class="line-height-2">
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr class="line-height-2">
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5">Banyuwangi, {{ date('d F Y', strtotime($permohonan->created_at)) }}</td>
-                        </tr>
-                        <tr class="line-height-1">
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5">Kepala Desa/Lurah</td>
-                        </tr>
-                        <tr class="line-height-2">
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr class="line-height-2">
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr class="line-height-2">
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5">..................................................</td>
-                        </tr>
-                        
-                    </table>
-                </div> -->
+               Pada hari {{ hari(date('l', strtotime($permohonan->tanggal))) }}  tanggal {{ date('d F Y', strtotime($permohonan->tanggal)) }}  bertempat di <b>{{ $permohonan->lokasi }}</b></p>
+            
 
-                        
+            <p class="mt-20">
+                Bersama ini kami sampaikan surat – surat yang di perlukan untuk diperiksa sebagai berikut :
+            </p>
+            <ol type="1">
+                <li>Surat pengantar perkawinan dari Desa / Kelurahan</li>
+                <li>Persetujuan calon mempelai</li>
+                <li>Fotokopi KTP</li>
+                <li>Fotokopi Akta kelahiran</li>
+                <li>Fotokopi kartu keluarga</li>
+                <li>Paspoto 2x3 = 3lembar dan 4x6 berlatar belakang biru</li>
+                <li>....................................................</li>
+                <li>....................................................</li>
+            </ol>
+            
+            <p class="mt-20">
+                Demikian permohonan ini kami sampaikan, kiranya dapat diperiksa, dihadiri dan dicatat sesuai dengan
+                ketentuan peraturan perundang – undangan.
+            </p>
+
+            <div class="box">
+                <div class="w-70 line-height-0">
+                    <p>
+                        Diterima tanggal ..........................................
+                    </p>
+                    <p>
+                        Yang menerima
+                    </p>
+                    <p>
+                        Kepala KUA / PPN Luar Negeri
+                    </p>
+                    <p class="line-height-6">
+                        ............................................................
+                    </p>
+                </div>
+                <div class="w-30 ml-auto line-height-0">
+                    <p>
+                        Wassalam,
+                    </p>
+                    <p>
+                        Pemohon
+                    </p>
+                    <p class="line-height-7">
+                        ...............................................
+                    </p>
+                </div>
             </div>
 
-                   
         </div>
         
     </div>

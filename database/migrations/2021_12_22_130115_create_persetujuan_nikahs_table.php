@@ -17,7 +17,6 @@ class CreatePersetujuanNikahsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('pasangan_id');
             $table->unsignedBigInteger('keluarga_id');
-            $table->date('tanggal');
             $table->timestamps();
         });
     }

@@ -117,7 +117,7 @@ class PengantarNikahController extends Controller
         
         view()->share('app.pengantarcetak', ['pengantar'=> $pengantar,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu]);
         $pdf = PDF::loadView('app.pengantarcetak', ['pengantar'=> $pengantar,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu])->setPaper('a4', 'potrait');
-        return $pdf->stream();
+        return $pdf->stream('Surat Pengantar Nikah.pdf');
     }
 
     /**

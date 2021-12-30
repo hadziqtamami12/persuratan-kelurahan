@@ -78,6 +78,15 @@ class SideMenu
                 'title' => 'Data Permohonan'
             ],
 
+            'Data Persetujuan' => [
+                'icon' => 'users',
+                'route_name' => 'persetujuan',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Data Persetujuan'
+            ],
+
             // 'Data Kelahiran' => [
             //     'icon' => 'users',
             //     'route_name' => 'kelahiran',
