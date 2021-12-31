@@ -45,6 +45,7 @@ class PasanganController extends Controller
     {
         $request->validate([
             'nama' => 'required',
+            'bin' => 'required',
             'keluarga_id' => 'required',
             'jenkel' => 'required',
             'nik' => 'required',
@@ -61,6 +62,7 @@ class PasanganController extends Controller
         // dd($request);
         $pasangan = new Pasangan;
         $pasangan->nama = $request->nama;
+        $pasangan->bin = $request->bin;
         $pasangan->keluarga_id = $request->keluarga_id;
         $pasangan->jenkel = $request->jenkel;
         $pasangan->nik = $request->nik;
@@ -90,6 +92,7 @@ class PasanganController extends Controller
     {
         $request->validate([
             'nama' => 'required',
+            'bin' => 'required',
             'keluarga_id' => 'required',
             'jenkel' => 'required',
             'nik' => 'required',
@@ -106,6 +109,7 @@ class PasanganController extends Controller
         // dd($request);
         $pasangan = Pasangan::find($request->id);
         $pasangan->nama = $request->nama;
+        $pasangan->bin = $request->bin;
         $pasangan->keluarga_id = $request->keluarga_id;
         $pasangan->jenkel = $request->jenkel;
         $pasangan->nik = $request->nik;
@@ -177,31 +181,7 @@ class PasanganController extends Controller
      */
     public function update(Request $request, Pegawai $pasangans)
     {
-        $this->validate($request, [
-            'nama' => 'required',
-            'jenkel' => 'required',
-            'tanggal_lahir' => 'required',
-            'nik' => 'required',
-            'tanggal_masuk' => 'required',
-            'alamat' => 'required',
-            ]);
-   
-        $pegawai = Pasangan::find($request->id);
-        $pegawai->nama = $request->nama;
-        $pegawai->jenkel = $request->jenkel;
-        $pegawai->tanggal_lahir = $request->tanggal_lahir;
-        $pegawai->nik = $request->nik;
-        $pegawai->tanggal_masuk = $request->tanggal_masuk;
-        $pegawai->alamat = $request->alamat;
-        $pegawai->nohp = $request->nohp;
-        $pegawai->update();
-        // $pasangans->update($request->all());
-
-        if($pasangans){
-            return redirect()->back()->with(['success' => 'Data Pegawai'.$request->input('nama').'berhasil disimpan']);
-        }else{
-            return redirect()->back()->with(['danger' => 'Data Tidak Terekam!']);
-        }
+        
     }
 
     /**

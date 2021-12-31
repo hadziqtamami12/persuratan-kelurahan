@@ -12,6 +12,8 @@ use App\Http\Controllers\{
     PengantarNikahController,
     PermohonanNikahController,
     PersetujuanNikahController,
+    IzinNikahController,
+    KematianPasanganController,
     
 
 };
@@ -95,6 +97,23 @@ Route::middleware('auth')->group(function() {
         Route::POST('persetujuanupdate', [PersetujuanNikahController::class, 'persetujuanupdate'])->name('persetujuanupdate');
         Route::get('persetujuandelete/{id}', [PersetujuanNikahController::class, 'destroy'])->name('persetujuandelete');
         Route::get('persetujuancetak/{id}', [PersetujuanNikahController::class, 'persetujuancetak'])->name('persetujuancetak');
+
+        //Data Izin Nikah Manage
+        Route::get('izin', [IzinNikahController::class, 'index'])->name('izin');
+        Route::POST('izinadd', [IzinNikahController::class, 'izinadd'])->name('izinadd');
+        Route::get('izinedit', [IzinNikahController::class, 'izinedit'])->name('izinedit');
+        Route::POST('izinupdate', [IzinNikahController::class, 'izinupdate'])->name('izinupdate');
+        Route::get('izindelete/{id}', [IzinNikahController::class, 'destroy'])->name('izindelete');
+        Route::get('izincetak/{id}', [IzinNikahController::class, 'izincetak'])->name('izincetak');
+
+        //Data Kematian Pasangan Nikah Manage
+        Route::get('kematian_pasangan', [KematianPasanganController::class, 'index'])->name('kematian_pasangan');
+        Route::get('kematian_pasangan_get_id', [KematianPasanganController::class, 'kematian_pasangan_get_id'])->name('kematian_pasangan_get_id');
+        Route::POST('kematian_pasanganadd', [KematianPasanganController::class, 'kematian_pasanganadd'])->name('kematian_pasanganadd');
+        Route::get('kematian_pasanganedit', [KematianPasanganController::class, 'kematian_pasanganedit'])->name('kematian_pasanganedit');
+        Route::POST('kematian_pasanganupdate', [KematianPasanganController::class, 'kematian_pasanganupdate'])->name('kematian_pasanganupdate');
+        Route::get('kematian_pasangandelete/{id}', [KematianPasanganController::class, 'destroy'])->name('kematian_pasangandelete');
+        Route::get('kematian_pasangancetak/{id}', [KematianPasanganController::class, 'kematian_pasangancetak'])->name('kematian_pasangancetak');
 
     });
     Route::group(['middleware'=>['auth','role:su']],function(){

@@ -278,7 +278,7 @@
                             <td> {{ $keluarga->jenkel ? $keluarga->jenkel : 'belum diisi' }}</td>
                         </tr>
                         <tr>
-                            <td> {{ $keluarga->tempat_lahir . ', ' . $keluarga->tempat_lahir ? $keluarga->tempat_lahir . ', ' . $keluarga->tempat_lahir : 'belum diisi' }}</td>
+                            <td> {{ $keluarga->tempat_lahir . ', ' . $keluarga->tanggal_lahir ? $keluarga->tempat_lahir . ', ' . $keluarga->tanggal_lahir : 'belum diisi' }}</td>
                         </tr>
                         <tr>
                             <td> {{ $keluarga->kewarganegaraan ? $keluarga->kewarganegaraan : 'belum diisi' }}</td>
@@ -316,7 +316,7 @@
                             <td> {{ $ayah->jenkel ? $ayah->jenkel : 'belum diisi' }}</td>
                         </tr>
                         <tr>
-                            <td> {{ $ayah->tempat_lahir . ', ' . $ayah->tempat_lahir ? $ayah->tempat_lahir . ', ' . $ayah->tempat_lahir : 'belum diisi' }}</td>
+                            <td> {{ $ayah->tempat_lahir . ', ' . $ayah->tanggal_lahir ? $ayah->tempat_lahir . ', ' . $ayah->tanggal_lahir : 'belum diisi' }}</td>
                         </tr>
                         <tr>
                             <td> {{ $ayah->kewarganegaraan ? $ayah->kewarganegaraan : 'belum diisi' }}</td>
@@ -343,7 +343,7 @@
                             <td> {{ $ibu->jenkel ? $ibu->jenkel : 'belum diisi' }}</td>
                         </tr>
                         <tr>
-                            <td> {{ $ibu->tempat_lahir . ', ' . $ibu->tempat_lahir ? $ibu->tempat_lahir . ', ' . $ibu->tempat_lahir : 'belum diisi' }}</td>
+                            <td> {{ $ibu->tempat_lahir . ', ' . $ibu->tanggal_lahir ? $ibu->tempat_lahir . ', ' . $ibu->tanggal_lahir : 'belum diisi' }}</td>
                         </tr>
                         <tr>
                             <td> {{ $ibu->kewarganegaraan ? $ibu->kewarganegaraan : 'belum diisi' }}</td>

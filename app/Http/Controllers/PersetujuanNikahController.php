@@ -118,7 +118,7 @@ class PersetujuanNikahController extends Controller
         
         view()->share('app.persetujuancetak', ['persetujuan'=> $persetujuan,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu]);
         $pdf = PDF::loadView('app.persetujuancetak', ['persetujuan'=> $persetujuan,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu])->setPaper('a4', 'potrait');
-        return $pdf->stream('Surat persetujuan Nikah.pdf');
+        return $pdf->stream('Surat Persetujuan Nikah.pdf');
     }
 
     /**

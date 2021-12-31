@@ -17,6 +17,7 @@ class CreatePasangansTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('keluarga_id');
             $table->string('nama');
+            $table->string('bin');
             $table->string('nik');
             $table->enum('jenkel', ['laki-laki', 'perempuan']);
             $table->string('tempat_lahir');

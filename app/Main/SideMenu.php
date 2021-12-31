@@ -87,6 +87,24 @@ class SideMenu
                 'title' => 'Data Persetujuan'
             ],
 
+            'Data Perizinan' => [
+                'icon' => 'users',
+                'route_name' => 'izin',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Data Perizinan'
+            ],
+
+            'Data Kematian Pasangan' => [
+                'icon' => 'users',
+                'route_name' => 'kematian_pasangan',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Data Kematian Pasangan'
+            ],
+
             // 'Data Kelahiran' => [
             //     'icon' => 'users',
             //     'route_name' => 'kelahiran',

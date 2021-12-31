@@ -15,9 +15,10 @@ class CreateKematianPasangansTable extends Migration
     {
         Schema::create('kematian_pasangans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('keluarga_id');
             $table->unsignedBigInteger('pasangan_id');
             $table->date('tanggal');
-            $table->enum('status_kematian', ['laki-laki', 'perempuan']);
+            $table->string('lokasi');
             $table->timestamps();
         });
     }

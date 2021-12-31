@@ -31,6 +31,7 @@
                                     <th class="text-center whitespace-nowrap">No</th>
                                     <th class="text-center whitespace-nowrap">Pasangan dari</th>
                                     <th class="text-center whitespace-nowrap">Nama</th>
+                                    <th class="text-center whitespace-nowrap">Bin</th>
                                     <th class="text-center whitespace-nowrap">Jenis Kelamin</th>
                                     <th class="text-center whitespace-nowrap">NIK</th>
                                     <th class="text-center whitespace-nowrap">Tempat Lahir</th>
@@ -54,6 +55,7 @@
                                         <td class="w-40">{{ ++ $i }}</td>
                                         <td class="text-center">{{ $item->nama_pasangan ? $item->nama_pasangan : 'belum diisi' }}</td>
                                         <td class="text-center">{{ $item->nama ? $item->nama : 'belum diisi' }}</td>
+                                        <td class="text-center">{{ $item->bin ? $item->bin : 'belum diisi' }}</td>
                                         <td class="text-center">{{ $item->jenkel ? $item->jenkel : 'belum diisi' }}</td>
                                         <td class="text-center">{{ $item->nik ? $item->nik : 'belum diisi' }}</td>
                                         <td class="text-center">{{ $item->tempat_lahir ? $item->tempat_lahir : 'belum diisi' }}</td>
@@ -128,6 +130,10 @@
                         <div class="col-span-12 sm:col-span-12">
                             <label for="modal-form-1" class="form-label">Nama</label>
                             <input id="modal-form-1" name="nama" type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="col-span-12 sm:col-span-12">
+                            <label for="modal-form-12" class="form-label">Bin</label>
+                            <input id="modal-form-12" name="bin" type="text" class="form-control" placeholder="">
                         </div>
                         <div class="col-span-12 sm:col-span-12">
                             <label for="modal-form-11" class="form-label">Jenis Kelamin</label>
@@ -239,6 +245,10 @@
                             <input id="pasangan-edit-1" name="nama" type="text" class="form-control" placeholder="">
                         </div>
                         <div class="col-span-12 sm:col-span-12">
+                            <label for="pasangan-edit-12" class="form-label">Bin</label>
+                            <input id="pasangan-edit-12" name="bin" type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="col-span-12 sm:col-span-12">
                             <label for="pasangan-edit-2" class="form-label">Jenis Kelamin</label>
                             <select id="pasangan-edit-2" class="form-select" name="jenkel">
                                 <option value="laki-laki">Laki-Laki</option>
@@ -323,6 +333,7 @@
                             console.log(data);
                             $('#pasangan-update-id').val(data.id);
                             $('#pasangan-edit-1').val(data.nama);
+                            $('#pasangan-edit-12').val(data.bin);
                             $('#pasangan-edit-2').val(data.jenkel);
                             $('#pasangan-edit-3').val(data.nik);
                             $('#pasangan-edit-4').val(data.tempat_lahir);
