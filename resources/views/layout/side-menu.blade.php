@@ -22,23 +22,8 @@
             <ul>
                 @foreach ($side_menu as $menuKey => $menu)
                     @if ($menu == 'devider')
-                    @elseif ($menuKey == 'Data Pasangan')
-                        <li>
-                            <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
-                                <div class="side-menu__icon">
-                                    <!-- <i data-feather="{{ $menu['icon'] }}"></i> -->
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                <div class="side-menu__title">
-                                    {{ $menu['title'] }}
-                                    @if (isset($menu['sub_menu']))
-                                        <div class="side-menu__sub-icon {{ $first_level_active_index == $menuKey ? 'transform rotate-180' : '' }}">
-                                            <i data-feather="chevron-down"></i>
-                                        </div>
-                                    @endif
-                                </div>
-                            </a>
-                        </li>
+                    @elseif ($menuKey == 'users' && Auth::user()->role != 'su')
+                        @continue
                     @else
                         <li>
                             <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">

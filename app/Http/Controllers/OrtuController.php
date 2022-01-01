@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ayah;
 use App\Models\Ibu;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OrtuController extends Controller
@@ -22,14 +23,18 @@ class OrtuController extends Controller
         if (\Auth::check() && \Auth::user()->role == 'su'):
             $ayah = Ayah::orderBy('user_id', 'desc')->paginate(10);
             $ibu = Ibu::orderBy('user_id', 'desc')->paginate(10);
+            $user = User::all();
         else:
             $ayah = Ayah::where('user_id', \Auth::user()->id)->get();
             $ibu = Ibu::where('user_id', \Auth::user()->id)->get();
+            $user = User::all();
+
         endif;
 
         return view('app.ortu', [
             'ayah' => $ayah,
             'ibu' => $ibu,
+            'user' => $user,
             'data_request' => $data_request
         ])->with('i', ($request->input('page', 1) - 1) * 20);
         

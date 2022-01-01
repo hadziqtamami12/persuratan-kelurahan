@@ -116,6 +116,16 @@
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         @csrf
                     <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                        @if ( Auth::user()->role == 'su' )
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-13" class="form-label">Pilih User</label>
+                                <select id="modal-form-13" class="form-select" name="user_id">
+                                    @foreach ($user->skip(1) as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
                         <div class="col-span-12 sm:col-span-12">
                             <label for="modal-form-1" class="form-label">Nama</label>
                             <input id="modal-form-1" name="nama" type="text" class="form-control" placeholder="">

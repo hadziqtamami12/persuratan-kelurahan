@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Keluarga;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class KeluargaController extends Controller
@@ -21,11 +22,14 @@ class KeluargaController extends Controller
         $data_request = $request->all();
         if (\Auth::check() && \Auth::user()->role == 'su'):
             $keluarga = Keluarga::orderBy('user_id', 'desc')->paginate(10);
+            $user = User::all();
         else:
             $keluarga = Keluarga::where('user_id', \Auth::user()->id)->paginate(10);
+            $user = User::all();
         endif;
         return view('app.keluarga', [
             'keluarga' => $keluarga,
+            'user' => $user,
             'data_request' => $data_request,
         ])->with('i', ($request->input('page', 1) - 1) * 10);
         

@@ -60,50 +60,60 @@ class SideMenu
                 ],
             ],
 
-            'Data Pengantar' => [
-                'icon' => 'users',
-                'route_name' => 'pengantar',
-                'params' => [
-                    'layout' => 'side-menu'
+            'Modul Persuratan' => [
+                'icon' => 'home',
+                'title' => 'Modul Persuratan',
+                'sub_menu' => [
+
+                    'Data Pengantar' => [
+                        'icon' => 'users',
+                        'route_name' => 'pengantar',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Data Pengantar'
+                    ],
+        
+                    'Data Permohonan' => [
+                        'icon' => 'users',
+                        'route_name' => 'permohonan',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Data Permohonan'
+                    ],
+        
+                    'Data Persetujuan' => [
+                        'icon' => 'users',
+                        'route_name' => 'persetujuan',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Data Persetujuan'
+                    ],
+        
+                    'Data Perizinan' => [
+                        'icon' => 'users',
+                        'route_name' => 'izin',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Data Perizinan'
+                    ],
+        
+                    'Data Kematian Pasangan' => [
+                        'icon' => 'users',
+                        'route_name' => 'kematian_pasangan',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Data Kematian Pasangan'
+                    ],
+
                 ],
-                'title' => 'Data Pengantar'
             ],
 
-            'Data Permohonan' => [
-                'icon' => 'users',
-                'route_name' => 'permohonan',
-                'params' => [
-                    'layout' => 'side-menu'
-                ],
-                'title' => 'Data Permohonan'
-            ],
-
-            'Data Persetujuan' => [
-                'icon' => 'users',
-                'route_name' => 'persetujuan',
-                'params' => [
-                    'layout' => 'side-menu'
-                ],
-                'title' => 'Data Persetujuan'
-            ],
-
-            'Data Perizinan' => [
-                'icon' => 'users',
-                'route_name' => 'izin',
-                'params' => [
-                    'layout' => 'side-menu'
-                ],
-                'title' => 'Data Perizinan'
-            ],
-
-            'Data Kematian Pasangan' => [
-                'icon' => 'users',
-                'route_name' => 'kematian_pasangan',
-                'params' => [
-                    'layout' => 'side-menu'
-                ],
-                'title' => 'Data Kematian Pasangan'
-            ],
+            
 
             // 'Data Kelahiran' => [
             //     'icon' => 'users',
@@ -223,15 +233,15 @@ class SideMenu
             //     'title' => 'Pengecualian'
             // ],
             
-            // 'devider',
-            // 'users' => [
-            //     'icon' => 'users',
-            //     'route_name' => 'user',
-            //     'params' => [
-            //         'layout' => 'side-menu'
-            //     ],
-            //     'title' => 'Users'
-            // ],
+            'devider',
+            'users' => [
+                'icon' => 'users',
+                'route_name' => 'user',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Users'
+            ],
             // 'Setting' => [
             //     'icon' => 'trello',
             //     'title' => 'Setting Perusahaan',

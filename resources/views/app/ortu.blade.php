@@ -114,6 +114,8 @@
                         <!-- end data ibu -->
                     </div>
                     @else
+                    <a href="javascript:;" id="button-tambah-ayah" data-toggle="modal" data-target="#tambah-data-ayah"
+                    class="btn btn-primary ml-auto  shadow-md mr-2 mb-5">Tambah Data Ayah</a>
                     <div class="text-3xl font-bold leading-8">Data Ayah</div>
                     <div class="intro-y overflow-auto  mt-8 sm:mt-0 table-responsive">
                         <table class="table table-report sm:mt-2">
@@ -174,7 +176,8 @@
                         </div>
                     </div>
 
-
+                    <a href="javascript:;" id="button-tambah-ibu" data-toggle="modal" data-target="#tambah-data-ibu"
+                        class="btn btn-primary shadow-md mr-2 mb-5">Tambah Data Ibu</a>
                     <div class="text-3xl font-bold leading-8 mt-5">Data Ibu</div>
                     <div class="intro-y overflow-auto  mt-8 sm:mt-0 table-responsive">
                         <table class="table table-report sm:mt-2">
@@ -269,6 +272,16 @@
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         @csrf
                     <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                        @if ( Auth::user()->role == 'su' )
+                        <div class="col-span-12 sm:col-span-12">
+                            <label for="modal-form-13" class="form-label">Pilih User</label>
+                            <select id="modal-form-13" class="form-select" name="user_id">
+                                @foreach ($user->skip(1) as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @endif
                         <div class="col-span-12 sm:col-span-12">
                             <label for="modal-form-1" class="form-label">Nama Ayah</label>
                             <input id="modal-form-1" name="nama" type="text" class="form-control" placeholder="">
@@ -356,6 +369,16 @@
                         @csrf
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                    @if ( Auth::user()->role == 'su' )
+                        <div class="col-span-12 sm:col-span-12">
+                            <label for="modal-form-13" class="form-label">Pilih User</label>
+                            <select id="modal-form-13" class="form-select" name="user_id">
+                                @foreach ($user->skip(1) as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @endif
                     <div class="col-span-12 sm:col-span-12">
                             <label for="modal-form-1" class="form-label">Nama Ibu</label>
                             <input id="modal-form-1" name="nama" type="text" class="form-control" placeholder="">
@@ -605,12 +628,14 @@
                         dataType: "JSON",
                         success: function(data)
                         {
-                            $("#button-tambah-ayah").removeAttr('data-target');
-                            $("#button-tambah-ayah").removeClass('btn-primary');
-                            $("#button-tambah-ayah").addClass('btn-secondary');
-                            $("#button-edit-ayah").removeClass('invisible');
-                            $("#button-edit-ayah").addClass('visible');
-                            $("#button-edit-ayah").attr("data-id", data.id);
+                            if (data != null){
+                                $("#button-tambah-ayah").removeAttr('data-target');
+                                $("#button-tambah-ayah").removeClass('btn-primary');
+                                $("#button-tambah-ayah").addClass('btn-secondary');
+                                $("#button-edit-ayah").removeClass('invisible');
+                                $("#button-edit-ayah").addClass('visible');
+                                $("#button-edit-ayah").attr("data-id", data.id);
+                            }
                             
                         }
                     });
@@ -622,12 +647,14 @@
                         dataType: "JSON",
                         success: function(data)
                         {
-                            $("#button-tambah-ibu").removeAttr('data-target');
-                            $("#button-tambah-ibu").removeClass('btn-primary');
-                            $("#button-tambah-ibu").addClass('btn-secondary');
-                            $("#button-edit-ibu").removeClass('invisible');
-                            $("#button-edit-ibu").addClass('visible');
-                            $("#button-edit-ibu").attr("data-id", data.id);
+                            if (data != null){
+                                $("#button-tambah-ibu").removeAttr('data-target');
+                                $("#button-tambah-ibu").removeClass('btn-primary');
+                                $("#button-tambah-ibu").addClass('btn-secondary');
+                                $("#button-edit-ibu").removeClass('invisible');
+                                $("#button-edit-ibu").addClass('visible');
+                                $("#button-edit-ibu").attr("data-id", data.id);
+                            }
 
                             
                         }

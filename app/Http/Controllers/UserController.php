@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         //
         $users = User::all();
-        return view('gocay.users', ['users' => $users]);
+        return view('app.users', ['users' => $users]);
     }
 
     /**
