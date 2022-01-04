@@ -156,7 +156,7 @@
 </head>
 <body>
     <div class="w-100 mt-minus-20">
-    <h3 class="text-center UC">Formulir Pengantar Nikah</h3>
+    <h3 class="text-center UC">Surat Kematian Pasangan</h3>
         <h3 class="text-right mt-minus-10">Model N6</h3>
 
         <div class="w-100 mt-minus-10">

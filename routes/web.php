@@ -15,6 +15,8 @@ use App\Http\Controllers\{
     IzinNikahController,
     KematianPasanganController,
     UserController,
+    KelahiranController,
+    KematianController,
     
 
 };
@@ -115,6 +117,22 @@ Route::middleware('auth')->group(function() {
         Route::POST('kematian_pasanganupdate', [KematianPasanganController::class, 'kematian_pasanganupdate'])->name('kematian_pasanganupdate');
         Route::get('kematian_pasangandelete/{id}', [KematianPasanganController::class, 'destroy'])->name('kematian_pasangandelete');
         Route::get('kematian_pasangancetak/{id}', [KematianPasanganController::class, 'kematian_pasangancetak'])->name('kematian_pasangancetak');
+
+        //Management Kelahiran 
+        Route::get('kelahiran', [KelahiranController::class, 'index'])->name('kelahiran');
+        Route::post('kelahiranadd', [KelahiranController::class, 'kelahiranadd'])->name('kelahiranadd');
+        Route::get('kelahiranedit', [KelahiranController::class, 'kelahiranedit'])->name('kelahiranedit');
+        Route::post('kelahiranupdate', [KelahiranController::class, 'kelahiranupdate'])->name('kelahiranupdate');
+        Route::get('kelahirandelete/{id}', [KelahiranController::class, 'destroy'])->name('kelahirandelete');
+        Route::get('kelahirancetak/{id}', [KelahiranController::class, 'kelahirancetak'])->name('kelahirancetak');
+
+
+        //Management Kematian 
+        Route::get('kematian', [KematianController::class, 'index'])->name('kematian');
+        Route::post('kematianadd', [KematianController::class, 'store'])->name('kematianadd');
+        Route::get('kematianedit', [KematianController::class, 'edit'])->name('kematianedit');
+        Route::post('kematianupdate', [KematianController::class, 'update'])->name('kematianupdate');
+        Route::get('kematiandelete/{id}', [KematianController::class, 'destroy'])->name('kematiandelete');
 
     });
     Route::group(['middleware'=>['auth','role:su']],function(){

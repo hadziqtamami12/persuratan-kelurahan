@@ -378,7 +378,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        @endif
+                    @endif
                     <div class="col-span-12 sm:col-span-12">
                             <label for="modal-form-1" class="form-label">Nama Ibu</label>
                             <input id="modal-form-1" name="nama" type="text" class="form-control" placeholder="">
