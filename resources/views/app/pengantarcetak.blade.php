@@ -111,17 +111,17 @@
                 <tr>
                     <td class="w-43">KANTOR DESA/KELURAHAN</td>
                     <td>:</td>
-                    <td class="w-50">TUKANGKAYU</td>
+                    <td class="w-50">PENATABAN</td>
                 </tr>
                 <tr>
                     <td class="w-43">KECAMATAN</td>
                     <td>:</td>
-                    <td class="w-50">TUKANGKAYU</td>
+                    <td class="w-50">GIRI</td>
                 </tr>
                 <tr>
                     <td class="w-43">KABUPATEN/KOTA</td>
                     <td>:</td>
-                    <td class="w-50">TUKANGKAYU</td>
+                    <td class="w-50">BANYUWANGI</td>
                 </tr>
             </table>
         </div> 

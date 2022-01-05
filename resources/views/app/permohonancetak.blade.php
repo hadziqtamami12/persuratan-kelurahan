@@ -19,7 +19,6 @@
         }
         table{
             border-collapse : collapse;
-            /* border-spacing: 0; */
         }
         .box{
             display : flex;
@@ -110,6 +109,9 @@
         .mt-20{
             margin-top: 20px;
         }
+        .mt-120{
+            margin-top: 120px;
+        }
         .mb-10{
             margin-bottom: 10px;
         }
@@ -167,12 +169,35 @@
 
         <div class="box-100">
             <p class="line-height-0" >Kepada Yth,</p>
-            <p class="line-height-0">Kepala KBRI / KJRI / KUA Kecamatan ........................</p>
-            <p class="line-height-0">di......................................................................................</p>
-            <p>Dengan hormat, kami mengajukan permohonan kehendak perkawinan untuk atas nama kami calon suami: <b>{{ $keluarga->jenkel == 'laki-laki' ? $keluarga->nama : $pasangan->nama  }}</b>
+            <p class="line-height-0">Kepala KBRI / KJRI / KUA Kecamatan Giri</p>
+            <p class="line-height-0">di Giri
+            <!-- <p>Dengan hormat, kami mengajukan permohonan kehendak perkawinan untuk atas nama kami calon suami: <b>{{ $keluarga->jenkel == 'laki-laki' ? $keluarga->nama : $pasangan->nama  }}</b>
                dengan calon istri <b>{{ $pasangan->jenkel == 'perempuan' ? $pasangan->nama : $keluarga->nama  }}</b>
-               Pada hari {{ hari(date('l', strtotime($permohonan->tanggal))) }}  tanggal {{ date('d F Y', strtotime($permohonan->tanggal)) }}  bertempat di <b>{{ $permohonan->lokasi }}</b></p>
-            
+               Pada hari {{ hari(date('l', strtotime($permohonan->tanggal))) }}  tanggal {{ date('d F Y', strtotime($permohonan->tanggal)) }}  bertempat di <b>{{ $permohonan->lokasi }}</b></p> -->
+
+            <p>Dengan hormat, kami mengajukan permohonan kehendak nikah untuk atas nama :</p>
+            <table class="w-100">
+                <tr>
+                    <td>Calon Suami</td>
+                    <td>:</td>
+                    <td>{{ ucwords($keluarga->jenkel == 'laki-laki' ? $keluarga->nama : $pasangan->nama)  }}</td>
+                </tr>
+                <tr>
+                    <td>Calon Istri</td>
+                    <td>:</td>
+                    <td>{{ ucwords($pasangan->jenkel == 'perempuan' ? $pasangan->nama : $keluarga->nama)  }}</td>
+                </tr>
+                <tr>
+                    <td>Hari/Tanggal</td>
+                    <td>:</td>
+                    <td>{{ hari(date('l', strtotime($permohonan->tanggal))) }} / {{ date('d F Y', strtotime($permohonan->tanggal)) }}</td>
+                </tr>
+                <tr>
+                    <td>Tempat Akad Nikah</td>
+                    <td>:</td>
+                    <td>{{ $permohonan->lokasi }}</td>
+                </tr>
+            </table>
 
             <p class="mt-20">
                 Bersama ini kami sampaikan surat – surat yang di perlukan untuk diperiksa sebagai berikut :
@@ -184,8 +209,8 @@
                 <li>Fotokopi Akta kelahiran</li>
                 <li>Fotokopi kartu keluarga</li>
                 <li>Paspoto 2x3 = 3lembar dan 4x6 berlatar belakang biru</li>
-                <li>....................................................</li>
-                <li>....................................................</li>
+                <!-- <li>....................................................</li>
+                <li>....................................................</li> -->
             </ol>
             
             <p class="mt-20">
@@ -194,9 +219,9 @@
             </p>
 
             <div class="box">
-                <div class="w-70 line-height-0">
+                <div class="w-60 line-height-0">
                     <p>
-                        Diterima tanggal ..........................................
+                        Diterima tanggal ..........................
                     </p>
                     <p>
                         Yang menerima
@@ -208,15 +233,15 @@
                         ............................................................
                     </p>
                 </div>
-                <div class="w-30 ml-auto line-height-0">
+                <div class="w-40 ml-auto line-height-0">
                     <p>
                         Wassalam,
                     </p>
                     <p>
                         Pemohon
                     </p>
-                    <p class="line-height-7">
-                        ...............................................
+                    <p class="mt-120">
+                        {{ ucwords($keluarga->jenkel == 'laki-laki' ? $keluarga->nama : $pasangan->nama)  }}
                     </p>
                 </div>
             </div>
