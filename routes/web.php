@@ -129,10 +129,12 @@ Route::middleware('auth')->group(function() {
 
         //Management Kematian 
         Route::get('kematian', [KematianController::class, 'index'])->name('kematian');
-        Route::post('kematianadd', [KematianController::class, 'store'])->name('kematianadd');
-        Route::get('kematianedit', [KematianController::class, 'edit'])->name('kematianedit');
-        Route::post('kematianupdate', [KematianController::class, 'update'])->name('kematianupdate');
+        Route::post('kematianadd', [KematianController::class, 'kematianadd'])->name('kematianadd');
+        Route::get('kematianedit', [KematianController::class, 'kematianedit'])->name('kematianedit');
+        Route::post('kematianupdate', [KematianController::class, 'kematianupdate'])->name('kematianupdate');
         Route::get('kematiandelete/{id}', [KematianController::class, 'destroy'])->name('kematiandelete');
+        Route::get('kematiancetak/{id}', [KematianController::class, 'kematiancetak'])->name('kematiancetak');
+
 
     });
     Route::group(['middleware'=>['auth','role:su']],function(){

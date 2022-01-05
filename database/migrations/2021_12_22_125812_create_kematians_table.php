@@ -28,6 +28,7 @@ class CreateKematiansTable extends Migration
             $table->string('tempat_kematian');
             $table->string('penyebab_kematian');
             $table->string('nama_pelapor');
+            $table->string('hubungan_pelapor');
             $table->timestamps();
         });
     }
