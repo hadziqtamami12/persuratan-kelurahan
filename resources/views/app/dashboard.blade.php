@@ -126,6 +126,18 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                                <div class="report-box zoom-in">
+                                    <div class="box p-5">
+                                        <div class="flex">
+                                            <i data-feather="users" class="report-box__icon text-theme-10"></i>
+                                        </div>
+                                        <div class="text-3xl font-bold leading-8 mt-6">{{$kematian->count()}}</div>
+                                        <div class="text-base text-gray-600 mt-1">Jumlah Surat Kelahiran</div>
+                                    </div>
+                                </div>
+                            </div>
                 </div> 
                 <!-- END: General Report -->
             </div>

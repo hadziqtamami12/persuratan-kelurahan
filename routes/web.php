@@ -148,7 +148,7 @@ Route::middleware('auth')->group(function() {
 
     });
 
-        // Gocay Routing
+        // Root Routing
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     

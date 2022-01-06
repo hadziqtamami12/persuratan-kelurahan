@@ -28,28 +28,30 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
 
-        // $dashboard = DB::table('users')
-        //             ->select( 'keluargas.id', 'keluargas.user_id', 'pengantars.*', 'permohonans.*', 'persetujuans.*', 'izins.*', 'kematian_pasangans.*', 'kelahirans.*', 'kematians.*')
-        //             ->join('pengantars', 'pengantars.keluarga_id', '=', 'keluargas.id')
-        //             ->join('permohonans', 'permohonans.keluarga_id', '=', 'keluargas.id')
-        //             ->join('persetujuans', 'persetujuans.keluarga_id', '=', 'keluargas.id')
-        //             ->join('izins', 'izins.keluarga_id', '=', 'keluargas.id')
-        //             ->join('kematian_pasangans', 'kematian_pasangans.keluarga_id', '=', 'keluargas.id')
-        //             ->join('kelahirans', 'kelahirans.keluarga_id', '=', 'keluargas.id')
-        //             ->join('kematians', 'kematians.user_id', '=', 'keluargas.user_id')
-        //             ->whereMonth('created_at', date('m'))
-        //             ->get();
+        if (\Auth::check() && \Auth::user()->role == 'su'):
+            $keluarga = Keluarga::whereMonth('created_at', date('m'));
+            $ayah = Ayah::whereMonth('created_at', date('m'));
+            $ibu = Ibu::whereMonth('created_at', date('m'));
+            $pengantar = Pengantar_nikah::whereMonth('created_at', date('m'));
+            $permohonan = Permohonan_nikah::whereMonth('created_at', date('m'));
+            $persetujuan = Persetujuan_nikah::whereMonth('created_at', date('m'));
+            $izin = Izin_nikah::whereMonth('created_at', date('m'));
+            $kematian_pasangan = Kematian_pasangan::whereMonth('created_at', date('m'));
+            $kelahiran = Kelahiran::whereMonth('created_at', date('m'));
+            $kematian = Kematian::whereMonth('created_at', date('m'));
+        else:
+            $keluarga = Keluarga::where('user_id', \Auth::user()->id);
+            $ayah = Ayah::where('user_id', \Auth::user()->id)->get();
+            $ibu = Ibu::where('user_id', \Auth::user()->id)->get();
+            $pengantar = Pengantar_nikah::join('keluargas', 'keluargas.id', '=', 'pengantar_nikahs.keluarga_id')->where('keluargas.user_id', \Auth::user()->id)->get();
+            $permohonan = Permohonan_nikah::join('keluargas', 'keluargas.id', '=', 'permohonan_nikahs.keluarga_id')->where('keluargas.user_id', \Auth::user()->id)->get();
+            $persetujuan = Persetujuan_nikah::join('keluargas', 'keluargas.id', '=', 'persetujuan_nikahs.keluarga_id')->where('keluargas.user_id', \Auth::user()->id)->get();
+            $izin = Izin_nikah::join('keluargas', 'keluargas.id', '=', 'izin_nikahs.keluarga_id')->where('keluargas.user_id', \Auth::user()->id)->get();
+            $kematian_pasangan = Kematian_pasangan::join('keluargas', 'keluargas.id', '=', 'kematian_pasangans.keluarga_id')->where('keluargas.user_id', \Auth::user()->id)->get();
+            $kelahiran = Kelahiran::join('keluargas', 'keluargas.id', '=', 'kelahirans.keluarga_id')->where('keluargas.user_id', \Auth::user()->id)->get();
+            $kematian = Kematian::where('user_id', \Auth::user()->id)->get();
+        endif;
 
-        $keluarga = Keluarga::whereMonth('created_at', date('m'));
-        $ayah = Ayah::whereMonth('created_at', date('m'));
-        $ibu = Ibu::whereMonth('created_at', date('m'));
-        $pengantar = Pengantar_nikah::whereMonth('created_at', date('m'));
-        $permohonan = Permohonan_nikah::whereMonth('created_at', date('m'));
-        $persetujuan = Persetujuan_nikah::whereMonth('created_at', date('m'));
-        $izin = Izin_nikah::whereMonth('created_at', date('m'));
-        $kematian_pasangan = Kematian_pasangan::whereMonth('created_at', date('m'));
-        $kelahiran = Kelahiran::whereMonth('created_at', date('m'));
-        $kematian = Kematian::whereMonth('created_at', date('m'));
         return view('app.dashboard',  [
             'pengantar' => $pengantar,
             'permohonan' => $permohonan,
