@@ -3,8 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keluarga;
-use App\Models\Ortu;
+use App\Models\Ayah;
+use App\Models\Ibu;
 use Illuminate\Http\Request;
+use App\Models\Pengantar_nikah;
+use App\Models\Permohonan_nikah;
+use App\Models\Persetujuan_nikah;
+use App\Models\Izin_nikah;
+use App\Models\Kematian_pasangan;
+use App\Models\Kelahiran;
+use App\Models\Kematian;
+
+
 
 class DashboardController extends Controller
 {
@@ -17,13 +27,43 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        //
-        $keluargas = Keluarga::paginate(10);
-        $ortus = Ortu::all();
-        return view('app.dashboard', [
-            'keluargas' => $keluargas,
-            'ortus' => $ortus
-        ])->with('i', ($request->input('page', 1) - 1) * 10);
+
+        // $dashboard = DB::table('users')
+        //             ->select( 'keluargas.id', 'keluargas.user_id', 'pengantars.*', 'permohonans.*', 'persetujuans.*', 'izins.*', 'kematian_pasangans.*', 'kelahirans.*', 'kematians.*')
+        //             ->join('pengantars', 'pengantars.keluarga_id', '=', 'keluargas.id')
+        //             ->join('permohonans', 'permohonans.keluarga_id', '=', 'keluargas.id')
+        //             ->join('persetujuans', 'persetujuans.keluarga_id', '=', 'keluargas.id')
+        //             ->join('izins', 'izins.keluarga_id', '=', 'keluargas.id')
+        //             ->join('kematian_pasangans', 'kematian_pasangans.keluarga_id', '=', 'keluargas.id')
+        //             ->join('kelahirans', 'kelahirans.keluarga_id', '=', 'keluargas.id')
+        //             ->join('kematians', 'kematians.user_id', '=', 'keluargas.user_id')
+        //             ->whereMonth('created_at', date('m'))
+        //             ->get();
+
+        $keluarga = Keluarga::whereMonth('created_at', date('m'));
+        $ayah = Ayah::whereMonth('created_at', date('m'));
+        $ibu = Ibu::whereMonth('created_at', date('m'));
+        $pengantar = Pengantar_nikah::whereMonth('created_at', date('m'));
+        $permohonan = Permohonan_nikah::whereMonth('created_at', date('m'));
+        $persetujuan = Persetujuan_nikah::whereMonth('created_at', date('m'));
+        $izin = Izin_nikah::whereMonth('created_at', date('m'));
+        $kematian_pasangan = Kematian_pasangan::whereMonth('created_at', date('m'));
+        $kelahiran = Kelahiran::whereMonth('created_at', date('m'));
+        $kematian = Kematian::whereMonth('created_at', date('m'));
+        return view('app.dashboard',  [
+            'pengantar' => $pengantar,
+            'permohonan' => $permohonan,
+            'persetujuan' => $persetujuan,
+            'izin' => $izin,
+            'kematian_pasangan' => $kematian_pasangan,
+            'kelahiran' => $kelahiran,
+            'keluarga' => $keluarga,
+            'ayah' => $ayah,
+            'ibu' => $ibu,
+            'kematian' => $kematian,
+        ]);
+
+        
         
     }
 
@@ -34,7 +74,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -45,32 +85,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'jenkel' => 'required',
-            'tanggal_lahir' => 'required',
-            'nik' => 'required',
-            'tanggal_masuk' => 'required',
-            'alamat' => 'required',
-         
-        ]);
 
-        // dd($request);
-        $pegawai = new Pegawai;
-        $pegawai->nama = $request->nama;
-        $pegawai->jenkel = $request->jenkel;
-        $pegawai->tanggal_lahir = $request->tanggal_lahir;
-        $pegawai->nik = $request->nik;
-        $pegawai->tanggal_masuk = $request->tanggal_masuk;
-        $pegawai->alamat = $request->alamat;
-        $pegawai->nohp = $request->nohp;
-        $pegawai->save();
-
-         if($pegawai){
-            return redirect()->route('pegawai')->with(['success' => 'Data Pegawai'.$request->input('nama').'berhasil disimpan']);
-        }else{
-            return redirect()->route('pegawai')->with(['danger' => 'Data Tidak Terekam!']);
-        }
     }
 
     /**
@@ -92,8 +107,7 @@ class DashboardController extends Controller
      */
     public function edit(Request $Request)
     {
-        $keluargas = Keluarga::findOrFail($Request->get('id'));
-        echo json_encode($keluargas);
+        
     }
 
     /**
@@ -105,31 +119,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Pegawai $keluargas)
     {
-        $this->validate($request, [
-            'nama' => 'required',
-            'jenkel' => 'required',
-            'tanggal_lahir' => 'required',
-            'nik' => 'required',
-            'tanggal_masuk' => 'required',
-            'alamat' => 'required',
-            ]);
-   
-        $pegawai = Keluarga::find($request->id);
-        $pegawai->nama = $request->nama;
-        $pegawai->jenkel = $request->jenkel;
-        $pegawai->tanggal_lahir = $request->tanggal_lahir;
-        $pegawai->nik = $request->nik;
-        $pegawai->tanggal_masuk = $request->tanggal_masuk;
-        $pegawai->alamat = $request->alamat;
-        $pegawai->nohp = $request->nohp;
-        $pegawai->update();
-        // $keluargas->update($request->all());
-
-        if($keluargas){
-            return redirect()->back()->with(['success' => 'Data Pegawai'.$request->input('nama').'berhasil disimpan']);
-        }else{
-            return redirect()->back()->with(['danger' => 'Data Tidak Terekam!']);
-        }
+        
     }
 
     /**
@@ -140,9 +130,6 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        $keluargas = Keluarga::where('id', $id)
-              ->delete();
-        return redirect()->back()
-                        ->with('success','Post deleted successfully');
+        
     }
 }
