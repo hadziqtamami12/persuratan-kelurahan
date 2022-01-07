@@ -29,6 +29,7 @@ class CreateKematiansTable extends Migration
             $table->string('penyebab_kematian');
             $table->string('nama_pelapor');
             $table->string('hubungan_pelapor');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -28,6 +28,7 @@ class CreateKelahiransTable extends Migration
             $table->string('nama_penyalin');
             $table->string('status_penyalin');
             $table->enum('jenkel_penyalin', ['laki-laki', 'perempuan']);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

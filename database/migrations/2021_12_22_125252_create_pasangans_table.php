@@ -27,6 +27,7 @@ class CreatePasangansTable extends Migration
             $table->string('pekerjaan');
             $table->string('alamat');
             $table->enum('status_nikah', ['duda', 'jejaka', 'janda', 'perawan']);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

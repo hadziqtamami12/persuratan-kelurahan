@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Illuminate\Notifications\Notifiable;
 
 class Izin_nikah extends Model
 {
-    // use HasFactory, Notifiable, SoftDeletes;
-    use HasFactory;
+    use HasFactory, Notifiable, SoftDeletes;
+    // use HasFactory;
 
     protected $fillable = ['pasangan_id', 'keluarga_id'];
     

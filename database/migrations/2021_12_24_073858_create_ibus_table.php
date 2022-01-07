@@ -25,6 +25,7 @@ class CreateIbusTable extends Migration
             $table->string('agama');
             $table->string('pekerjaan');
             $table->string('alamat');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

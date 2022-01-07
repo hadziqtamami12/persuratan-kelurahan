@@ -19,6 +19,7 @@ class CreatePermohonanNikahsTable extends Migration
             $table->unsignedBigInteger('keluarga_id');
             $table->date('tanggal');
             $table->string('lokasi');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

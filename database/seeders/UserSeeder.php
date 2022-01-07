@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
                 'name' => '12345678',
                 'email' => 'user@left4code.com',
                 'email_verified_at' => now(),
-                'password' => '12345678', // password
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'gender' => 'laki-laki',
                 'active' => 1,
                 'role' => 'user',

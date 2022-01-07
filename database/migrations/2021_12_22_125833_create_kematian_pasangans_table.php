@@ -19,6 +19,7 @@ class CreateKematianPasangansTable extends Migration
             $table->unsignedBigInteger('pasangan_id');
             $table->date('tanggal');
             $table->string('lokasi');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

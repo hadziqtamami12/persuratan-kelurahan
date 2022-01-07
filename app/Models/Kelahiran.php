@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class Kelahiran extends Model
 {
-    // use HasFactory, Notifiable, SoftDeletes;
-    use HasFactory;
+    use HasFactory, Notifiable, SoftDeletes;
+    // use HasFactory;
     protected $fillable = [
         'nama', 'keluarga_id', 'jenkel','tempat_lahir', 'tanggal_lahir', 'anak_ke', 'nama_pelapor', 'no_kk', 'alamat', 'hubungan_pelapor', 'nama_penyalin', 'jenkel_penyalin', 'status_penyalin'
     ];

@@ -34,6 +34,7 @@ class CreateOrtusTable extends Migration
             $table->string('agama_ibu');
             $table->string('pekerjaan_ibu');
             $table->string('alamat_ibu');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

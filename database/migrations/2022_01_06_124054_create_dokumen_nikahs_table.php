@@ -15,6 +15,7 @@ class CreateDokumenNikahsTable extends Migration
     {
         Schema::create('dokumen_nikahs', function (Blueprint $table) {
             $table->id();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
