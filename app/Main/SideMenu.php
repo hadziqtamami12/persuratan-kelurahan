@@ -110,6 +110,15 @@ class SideMenu
                         'title' => 'Data Kematian Pasangan'
                     ],
 
+                    'Data Dokumen Nikah' => [
+                        'icon' => 'users',
+                        'route_name' => 'dokumen_nikah',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Data Dokumen Nikah'
+                    ],
+
                 ],
             ],
 

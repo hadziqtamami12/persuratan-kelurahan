@@ -619,13 +619,13 @@
                                             <td> {{ $kelahiran->anak_ke ? $kelahiran->anak_ke : 'belum diisi' }}</td>
                                         </tr>
                                         <tr>
-                                            <td> {{ $pasangan->jenkel == 'perempuan' ? $pasangan->nama : $keluarga->nama }}</td>
+                                            <td> {{ $data_ibu->nama ? $data_ibu->nama : 'belum diisi' }}</td>
                                         </tr>
                                         <tr>
                                             <td> {{ $pasangan->alamat ? $pasangan->alamat : 'belum diisi' }}</td>
                                         </tr>
                                         <tr>
-                                            <td> {{ $keluarga->jenkel == 'laki-laki' ? $keluarga->nama : $pasangan->nama }}</td>
+                                            <td> {{ $data_bapak->nama ? $data_bapak->nama : 'belum diisi' }}</td>
                                         </tr>
                                         <tr>
                                             <td> {{ $kelahiran->nama_penyalin ? $kelahiran->nama_penyalin : 'belum diisi' }}</td>

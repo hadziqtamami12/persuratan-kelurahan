@@ -15,6 +15,16 @@ class CreateDokumenNikahsTable extends Migration
     {
         Schema::create('dokumen_nikahs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('keluarga_id');
+            $table->string('pengantar')->nullable();
+            $table->string('ktp')->nullable();
+            $table->string('kk')->nullable();
+            $table->string('kk_calon')->nullable();
+            $table->string('foto')->nullable();
+            $table->string('foto_calon')->nullable();
+            $table->string('ijazah')->nullable();
+            $table->string('surat_pernyataan')->nullable();
+            $table->string('bukti_pajak')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

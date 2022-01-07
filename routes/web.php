@@ -17,6 +17,7 @@ use App\Http\Controllers\{
     UserController,
     KelahiranController,
     KematianController,
+    DokumenNikahController,
     
 
 };
@@ -134,6 +135,14 @@ Route::middleware('auth')->group(function() {
         Route::post('kematianupdate', [KematianController::class, 'kematianupdate'])->name('kematianupdate');
         Route::get('kematiandelete/{id}', [KematianController::class, 'destroy'])->name('kematiandelete');
         Route::get('kematiancetak/{id}', [KematianController::class, 'kematiancetak'])->name('kematiancetak');
+
+
+        //Data Dokumen Nikah Manage
+        Route::get('dokumen_nikah', [DokumenNikahController::class, 'index'])->name('dokumen_nikah');
+        Route::post('dokumen_nikahadd', [DokumenNikahController::class, 'dokumen_nikahadd'])->name('dokumen_nikahadd');
+        Route::get('dokumen_nikahedit', [DokumenNikahController::class, 'dokumen_nikahedit'])->name('dokumen_nikahedit');
+        Route::POST('dokumen_nikahupdate', [DokumenNikahController::class, 'dokumen_nikahupdate'])->name('dokumen_nikahupdate');
+        Route::get('dokumen_nikahdelete/{id}', [DokumenNikahController::class, 'destroy'])->name('dokumen_nikahdelete');
 
 
     });

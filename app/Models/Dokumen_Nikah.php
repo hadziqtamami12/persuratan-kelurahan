@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
-class DokumenNikah extends Model
+class Dokumen_nikah extends Model
 {
     // use HasFactory;
     use HasFactory, Notifiable, SoftDeletes;
