@@ -300,6 +300,9 @@
                                             <td colspan="3">&nbsp;</td>
                                         </tr>
                                         <tr>
+                                            <td colspan="3">&nbsp;</td>
+                                        </tr>
+                                        <tr>
                                             <td  class="text-bold">{{ hari(date('l', strtotime($kematian->tanggal))) ? hari(date('l', strtotime($kematian->tanggal))) : 'belum diisi' }}</td>
                                         </tr>
                                         <tr>
@@ -451,6 +454,9 @@
                                             <td colspan="3">&nbsp;</td>
                                         </tr>
                                         <tr>
+                                            <td colspan="3">&nbsp;</td>
+                                        </tr>
+                                        <tr>
                                             <td>{{ hari(date('l', strtotime($kematian->tanggal))) ? hari(date('l', strtotime($kematian->tanggal))) : 'belum diisi' }}</td>
                                         </tr>
                                         <tr>
@@ -591,6 +597,9 @@
                                         </tr>
                                         <tr>
                                             <td> {{ $kematian->usia ? $kematian->usia : 'belum diisi' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">&nbsp;</td>
                                         </tr>
                                         <tr>
                                             <td colspan="3">&nbsp;</td>

@@ -26,7 +26,9 @@ class KematianController extends Controller
         //
         $data_request = $request->all();
         if (\Auth::check() && \Auth::user()->role == 'su'):
-            $kematian = Kematian::orderBy('user_id', 'desc')->paginate(10);
+            $kematian = Kematian::select('kematians.*', 'ayahs.nama as nama_ayah', 'ayahs.user_id')
+                        ->join('ayahs', 'ayahs.user_id', '=', 'kematians.user_id')
+                        ->orderBy('kematians.user_id', 'desc')->paginate(10);
             $user = User::all();
         else:
             $kematian = Kematian::where('user_id', \Auth::user()->id)->paginate(10);
@@ -87,26 +89,26 @@ class KematianController extends Controller
     {
        
         $kematian = Kematian::where('id', $id)->first();
-        $keluarga = Keluarga::where('id', $kematian->user_id)
-        ->first();
-        $pasangan = Pasangan::where('id', $kematian->user_id)
-                        ->first();
+        // $keluarga = Keluarga::where('id', $kematian->user_id)
+        // ->first();
+        // $pasangan = Pasangan::where('id', $kematian->user_id)
+        //                 ->first();
         $ayah = Ayah::where('user_id', $kematian->user_id)
                      ->first();
         $ibu = Ibu::where('user_id', $kematian->user_id)
                      ->first();
 
-        if($keluarga->jenkel == 'laki-laki'):
-            $data_bapak = $keluarga;
-            $data_ibu = $pasangan;
-        else:
-            $data_bapak = $pasangan;
-            $data_ibu = $keluarga;
-        endif;
+        // if($keluarga->jenkel == 'laki-laki'):
+        //     $data_bapak = $keluarga;
+        //     $data_ibu = $pasangan;
+        // else:
+        //     $data_bapak = $pasangan;
+        //     $data_ibu = $keluarga;
+        // endif;
         
         $customPaper = array(0,0,793,1200);
-        view()->share('app.kematiancetak', ['data_bapak' => $data_bapak , 'data_ibu' => $data_ibu , 'kematian'=> $kematian,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu]);
-        $pdf = PDF::loadView('app.kematiancetak', ['data_bapak' => $data_bapak , 'data_ibu' => $data_ibu , 'kematian'=> $kematian,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu])->setPaper($customPaper, 'landscape');
+        view()->share('app.kematiancetak', ['kematian'=> $kematian, 'ayah' => $ayah, 'ibu' => $ibu]);
+        $pdf = PDF::loadView('app.kematiancetak', ['kematian'=> $kematian, 'ayah' => $ayah, 'ibu' => $ibu])->setPaper($customPaper, 'landscape');
         return $pdf->stream('Surat Kematian Pasangan.pdf');
     }
 

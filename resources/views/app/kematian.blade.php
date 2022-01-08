@@ -51,7 +51,7 @@
                                         @endif -->
                                         <td class="w-40">{{ ++ $i }}</td>
                                         @if ( Auth::user()->role == 'su' )
-                                        <td class="text-center whitespace-nowrap">{{ $item->ayah->nama ? $item->ayah->nama : 'belum diisi' }}</td>
+                                        <td class="text-center whitespace-nowrap">{{ $item->nama_ayah ? $item->nama_ayah : 'belum diisi' }}</td>
                                         @endif
                                         <td class="text-center whitespace-nowrap">{{ $item->tanggal ? $item->tanggal : 'belum diisi' }}</td>
                                         <td class="text-center">{{ $item->nama ? $item->nama : 'belum diisi' }}</td>

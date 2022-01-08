@@ -146,7 +146,7 @@ class KelahiranController extends Controller
         $kelahiran = Kelahiran::where('id', $id)->first();
         $keluarga = Keluarga::where('id', $kelahiran->keluarga_id)
         ->first();
-        $pasangan = Pasangan::where('id', $kelahiran->keluarga_id)
+        $pasangan = Pasangan::where('keluarga_id', $kelahiran->keluarga_id)
                         ->first();
         $ayah = Ayah::where('user_id', $keluarga->user_id)
                      ->first();
