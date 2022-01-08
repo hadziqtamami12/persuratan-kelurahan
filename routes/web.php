@@ -159,6 +159,7 @@ Route::middleware('auth')->group(function() {
 
         // Root Routing
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    // Route::post('useradd', [UserController::class, 'store'])->name('useradd');
 
     
 

@@ -92,8 +92,8 @@
                         <input id="modal-form-1" name="name" type="text" class="form-control" placeholder="Nama Atau Username">
                     </div>
                     <div class="col-span-12 sm:col-span-12">
-                        <label for="modal-form-2" class="form-label">Email</label>
-                        <input id="modal-form-2" name="email" type="email" class="form-control" placeholder="Alamat Email">
+                        <label for="modal-form-2-edit" class="form-label">Nomor HP</label>
+                        <input id="modal-form-2-edit" name="no_hp" type="number" class="form-control" placeholder="Nomor HP Aktif">
                     </div>
                      <div class="col-span-12 sm:col-span-6">
                         <label for="modal-form-3" class="form-label">Gender</label>
@@ -166,8 +166,8 @@
                         <input id="modal-form-1-edit" name="name" type="text" class="form-control" placeholder="Nama Atau Username">
                     </div>
                     <div class="col-span-12 sm:col-span-12">
-                        <label for="modal-form-2-edit" class="form-label">Email</label>
-                        <input id="modal-form-2-edit" name="email" type="email" class="form-control" placeholder="Alamat Email">
+                        <label for="modal-form-2-edit" class="form-label">Nomor HP</label>
+                        <input id="modal-form-2-edit" name="no_hp" type="number" class="form-control" placeholder="Nomor HP Aktif">
                     </div>
                      <div class="col-span-12 sm:col-span-6">
                         <label for="modal-form-3-edit" class="form-label">Gender</label>
@@ -226,7 +226,7 @@
                         {
                             $('#modal-update-id').val(data.id);
                             $('#modal-form-1-edit').val(data.name);
-                            $('#modal-form-2-edit').val(data.email);
+                            $('#modal-form-2-edit').val(data.no_hp);
                             // $('#modal-form-3-edit').val(data.gender);
                             // $('#modal-form-4-edit').val(data.role);
                             $('#modal-form-5-edit').attr('src', 'storage/'+data.photo);

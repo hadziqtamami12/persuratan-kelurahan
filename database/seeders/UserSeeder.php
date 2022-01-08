@@ -19,8 +19,9 @@ class UserSeeder extends Seeder
         \App\Models\User::insert([
             [ 
                 'name' => 'Left4code',
-                'email' => 'midone@left4code.com',
-                'email_verified_at' => now(),
+                // 'email' => 'midone@left4code.com',
+                // 'email_verified_at' => now(),
+                'no_hp' => '0898765432',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'gender' => 'laki-laki',
                 'active' => 1,
@@ -30,8 +31,9 @@ class UserSeeder extends Seeder
 
             [ 
                 'name' => '12345678',
-                'email' => 'user@left4code.com',
-                'email_verified_at' => now(),
+                // 'email' => 'user@left4code.com',
+                // 'email_verified_at' => now(),
+                'no_hp' => '0812345678',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'gender' => 'laki-laki',
                 'active' => 1,

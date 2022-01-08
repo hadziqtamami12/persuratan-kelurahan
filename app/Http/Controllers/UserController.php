@@ -42,7 +42,7 @@ class UserController extends Controller
         //
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'no_hp' => 'required',
             'gender' => 'required',
             'role' => 'required',
             'password' => 'required',
@@ -66,7 +66,7 @@ class UserController extends Controller
 
         $user = new User;
         $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        $user->no_hp = $request->input('no_hp');
         $user->gender = $request->gender;
         $user->role = $request->role;
         $user->active = 1;
@@ -119,7 +119,7 @@ class UserController extends Controller
         //
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'no_hp' => 'required',
             'gender' => 'required',
             'role' => 'required',
         ]);
