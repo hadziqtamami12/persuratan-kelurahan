@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Dokumen_nikah;
 use App\Models\Keluarga;
 use Illuminate\Http\Request;
+use File;
+use Storage;
 
 class DokumenNikahController extends Controller
 {
@@ -16,7 +18,7 @@ class DokumenNikahController extends Controller
         else:
             $keluarga = Keluarga::where('user_id', \Auth::user()->id)->paginate(10);
             if (!empty($keluarga)):
-                $dokumen = Dokumen_nikah::select('dokumen_nikahs.*', 'keluargas.id', 'keluargas.nama as nama_keluarga')->join('keluargas', 'keluargas.id', '=', 'dokumen_nikahs.keluarga_id')
+                $dokumen = Dokumen_nikah::select('dokumen_nikahs.*', 'keluargas.id as keluargaID', 'keluargas.nama as nama_keluarga')->join('keluargas', 'keluargas.id', '=', 'dokumen_nikahs.keluarga_id')
                             ->where('keluargas.user_id', \Auth::user()->id)->paginate(10);
             endif;
         endif;
@@ -106,6 +108,151 @@ class DokumenNikahController extends Controller
         $dokumen->surat_pernyataan = $request->surat_pernyataan ? $surat_pernyataan : null;
         $dokumen->bukti_pajak = $request->bukti_pajak ? $bukti_pajak : null;
         $dokumen->save();
+
+        if($dokumen){
+            return redirect()->back()->with(['success' => 'Data dokumen Nikah'.$request->input('nama').'berhasil disimpan']);
+        }else{
+            return redirect()->back()->with(['danger' => 'Data Tidak Terekam!']);
+        }
+    }
+
+
+    public function dokumen_nikahedit(Request $request)
+    {
+        $dokumen = Dokumen_nikah::findOrFail($request->get('id'));
+        echo json_encode($dokumen);
+    }
+
+    public function dokumen_nikahupdate(Request $request, Dokumen_nikah $dokumen)
+    {
+        $request->validate([
+            'keluarga_id' => 'required',
+            
+        ]);
+
+        $dokumen = Dokumen_nikah::find($request->id);
+
+
+        if ($request->hasFile('pengantar_edit') ) {
+            
+            $imagePath = public_path('storage/'.$dokumen->pengantar);
+            if(Storage::exists($imagePath)){
+                unlink($imagePath);
+            }
+            $extension = $request->file('pengantar_edit')->getClientOriginalExtension();
+            // Filename To store
+            $fileNameToStore = 'pengantar_'. $request->keluarga_id .'.'.$extension;
+            $pengantar = $request->file('pengantar_edit')->storeAs('pengantar', $fileNameToStore, 'public');
+            
+            $dokumen->pengantar = $request->pengantar_edit ? $pengantar : $dokumen->pengantar;
+
+        }
+       if ($request->hasFile('ktp_edit')) {
+           $imagePath = public_path('storage/'.$dokumen->ktp);
+            if(Storage::exists($imagePath)){
+                unlink($imagePath);
+            }
+           $extension = $request->file('ktp_edit')->getClientOriginalExtension();
+           // Filename To store
+           $fileNameToStore = 'ktp_'. $request->keluarga_id .'.'.$extension;
+           $ktp = $request->file('ktp_edit')->storeAs('ktp', $fileNameToStore, 'public');
+           
+           $dokumen->ktp = $request->ktp_edit ? $ktp : $dokumen->ktp;
+        }
+        if ($request->hasFile('kk_edit')) {
+            $imagePath = public_path('storage/'.$dokumen->kk);
+            if(Storage::exists($imagePath)){
+                unlink($imagePath);
+            }
+            $extension = $request->file('kk_edit')->getClientOriginalExtension();
+            // Filename To store
+            $fileNameToStore = 'kk_'. $request->keluarga_id .'.'.$extension;
+            $kk = $request->file('kk_edit')->storeAs('kk', $fileNameToStore, 'public');
+
+            $dokumen->kk = $request->kk_edit ? $kk : $dokumen->kk;
+
+        }
+        if ($request->hasFile('kk_calon_edit')) {
+            $imagePath = public_path('storage/'.$dokumen->kk_calon);
+            if(Storage::exists($imagePath)){
+                unlink($imagePath);
+            }
+            $extension = $request->file('kk_calon_edit')->getClientOriginalExtension();
+            // Filename To store
+            $fileNameToStore = 'kk_calon_'. $request->keluarga_id .'.'.$extension;
+            $kk_calon = $request->file('kk_calon_edit')->storeAs('kk_calon', $fileNameToStore, 'public');
+
+            $dokumen->kk_calon = $request->kk_calon_edit ? $kk_calon : $dokumen->kk_calon;
+        }
+        if ($request->hasFile('foto_edit')) {
+            $imagePath = public_path('storage/'.$dokumen->foto);
+            if(Storage::exists($imagePath)){
+                unlink($imagePath);
+            }
+            $extension = $request->file('foto_edit')->getClientOriginalExtension();
+            // Filename To store
+            $fileNameToStore = 'foto_'. $request->keluarga_id .'.'.$extension;
+            $foto = $request->file('foto_edit')->storeAs('foto', $fileNameToStore, 'public');
+
+            $dokumen->foto = $request->foto_edit ? $foto : $dokumen->foto;
+        }
+        if ($request->hasFile('foto_calon_edit')) {
+            $imagePath = public_path('storage/'.$dokumen->foto_calon);
+            if(Storage::exists($imagePath)){
+                unlink($imagePath);
+            }
+            $extension = $request->file('foto_calon_edit')->getClientOriginalExtension();
+            // Filename To store
+            $fileNameToStore = 'foto_calon_'. $request->keluarga_id .'.'.$extension;
+            $foto_calon = $request->file('foto_calon_edit')->storeAs('foto_calon', $fileNameToStore, 'public');
+
+            $dokumen->foto_calon = $request->foto_calon_edit ? $foto_calon : $dokumen->foto_calon;
+        }
+        if ($request->hasFile('ijazah_edit')) {
+            $imagePath = public_path('storage/'.$dokumen->ijazah);
+            if(Storage::exists($imagePath)){
+                unlink($imagePath);
+            }
+           $extension = $request->file('ijazah_edit')->getClientOriginalExtension();
+            // Filename To store
+            $fileNameToStore = 'ijazah_'. $request->keluarga_id .'.'.$extension;
+            $ijazah = $request->file('ijazah_edit')->storeAs('ijazah', $fileNameToStore, 'public');
+
+            $dokumen->ijazah = $request->ijazah_edit ? $ijazah : $dokumen->ijazah;
+        }
+        if ($request->hasFile('surat_pernyataan_edit')) {
+            $imagePath = public_path('storage/'.$dokumen->surat_pernyataan);
+            if(Storage::exists($imagePath)){
+                unlink($imagePath);
+            }
+            $extension = $request->file('surat_pernyataan_edit')->getClientOriginalExtension();
+            // Filename To store
+            $fileNameToStore = 'surat_pernyataan_'. $request->keluarga_id .'.'.$extension;
+            $surat_pernyataan = $request->file('surat_pernyataan_edit')->storeAs('surat_pernyataan', $fileNameToStore, 'public');
+
+            $dokumen->surat_pernyataan = $request->surat_pernyataan_edit ? $surat_pernyataan : $dokumen->surat_pernyataan;
+        }
+        if ($request->hasFile('bukti_pajak_edit')) {
+            $imagePath = public_path('storage/'.$dokumen->bukti_pajak);
+            if(Storage::exists($imagePath)){
+                unlink($imagePath);
+            }
+            $extension = $request->file('bukti_pajak_edit')->getClientOriginalExtension();
+            // Filename To store
+            $fileNameToStore = 'bukti_pajak_'. $request->keluarga_id .'.'.$extension;
+            $bukti_pajak = $request->file('bukti_pajak_edit')->storeAs('bukti_pajak', $fileNameToStore, 'public');
+
+            $dokumen->bukti_pajak = $request->bukti_pajak_edit ? $bukti_pajak : $dokumen->bukti_pajak;
+        }
+        // Else add a dummy dokumen
+        else {
+            $path = 'Nophoto.jpg';
+        }
+
+        
+        $dokumen->keluarga_id = $request->keluarga_id;
+        $dokumen->update();
+        
 
         if($dokumen){
             return redirect()->back()->with(['success' => 'Data dokumen Nikah'.$request->input('nama').'berhasil disimpan']);

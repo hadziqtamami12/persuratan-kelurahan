@@ -259,62 +259,53 @@
                     </div>
                     <!-- END: Modal Header -->
                     <!-- BEGIN: Modal Body -->
-                    <form method="POST" action="{{ route('dokumen_nikahupdate') }}">
-                    <input type="hidden" name="id" id="pasangan-update-id">
+                    <form method="POST" enctype="multipart/form-data" action="{{ route('dokumen_nikahupdate') }}">
+                    <input type="hidden" name="id" id="dokumen-nikah-update-id">
                         @csrf
                     <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="dokumen-nikah-edit-10" class="form-label">Pilih Keluarga</label>
-                            <select id="dokumen-nikah-edit-10" class="form-select" name="keluarga_id">
+                            <label for="dokumen-nikah-edit-1" class="form-label">Pilih Keluarga</label>
+                            <select id="dokumen-nikah-edit-1" class="form-select" name="keluarga_id">
                                 @foreach ($keluarga as $item)
                                 <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="modal-form-2" class="form-label">Dokumen Pengantar RT</label>
-                            <img class="img-preview img-fluid" id="preview-pengantar" src="" alt="pengantar">
-                            <input  name="pengantar"  id="input-pengantar-edit" type="file" class="form-control" placeholder="">
+                            <label for="modal-form-2-edit" id="label-pengantar-edit" class="form-label">Dokumen Pengantar RT</label>
+                            <input  name="pengantar_edit"  id="input-pengantar-edit" type="file" class="form-control" placeholder="">
                         </div>
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="modal-form-3" class="form-label">Dokumen KTP</label>
-                            <img class="img-preview img-fluid" id="preview-ktp" src="" alt="ktp">
-                            <input  name="ktp"  id="input-ktp-edit" type="file" class="form-control" placeholder="">
+                            <label for="modal-form-3" id="label-ktp-edit" class="form-label">Dokumen KTP</label>
+                            <input  name="ktp_edit"  id="input-ktp-edit" type="file" class="form-control" placeholder="">
                         </div>
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="modal-form-3" class="form-label">Dokumen KK</label>
-                            <img class="img-preview img-fluid" id="preview-kk" src="" alt="kk">
-                            <input  name="kk"  id="input-kk-edit" type="file" class="form-control" placeholder="">
+                            <label for="modal-form-3" id="label-kk-edit" class="form-label">Dokumen KK</label>
+                            <input  name="kk_edit"  id="input-kk-edit" type="file" class="form-control" placeholder="">
                         </div>
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="modal-form-3" class="form-label">Dokumen KK Calon</label>
-                            <img class="img-preview img-fluid" id="preview-kk_calon" src="" alt="kk_calon">
-                            <input  name="kk_calon"  id="input-kk_calon-edit" type="file" class="form-control" placeholder="">
+                            <label for="modal-form-3" id="label-kk_calon-edit" class="form-label">Dokumen KK Calon</label>
+                            <input  name="kk_calon_edit"  id="input-kk_calon-edit" type="file" class="form-control" placeholder="">
                         </div>
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="modal-form-3" class="form-label">Foto</label>
-                            <img class="img-preview img-fluid" id="preview-foto" src="" alt="foto">
-                            <input  name="foto"  id="input-foto-edit" type="file" class="form-control" placeholder="">
+                            <label for="modal-form-3" id="label-foto-edit" class="form-label">Foto</label>
+                            <input  name="foto_edit"  id="input-foto-edit" type="file" class="form-control" placeholder="">
                         </div>
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="modal-form-3" class="form-label">Foto Calon</label>
-                            <img class="img-preview img-fluid" id="preview-foto_calon" src="" alt="foto_calon">
-                            <input  name="foto_calon"  id="input-foto_calon-edit" type="file" class="form-control" placeholder="">
+                            <label for="modal-form-3" id="label-foto_calon-edit" class="form-label">Foto Calon</label>
+                            <input  name="foto_calon_edit"  id="input-foto_calon-edit" type="file" class="form-control" placeholder="">
                         </div>
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="modal-form-3" class="form-label">Ijazah</label>
-                            <img class="img-preview img-fluid" id="preview-ijazah" src="" alt="ijazah">
-                            <input  name="ijazah"  id="input-ijazah-edit" type="file" class="form-control" placeholder="">
+                            <label for="modal-form-3" id="label-ijazah-edit" class="form-label">Ijazah</label>
+                            <input  name="ijazah_edit"  id="input-ijazah-edit" type="file" class="form-control" placeholder="">
                         </div>
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="modal-form-3" class="form-label">Surat Pernyataan</label>
-                            <img class="img-preview img-fluid" id="preview-surat_pernyataan" src="" alt="surat_pernyataan">
-                            <input  name="surat_pernyataan"  id="input-surat_pernyataan-edit" type="file" class="form-control" placeholder="">
+                            <label for="modal-form-3" id="label-surat_pernyataan-edit" class="form-label">Surat Pernyataan</label>
+                            <input  name="surat_pernyataan_edit"  id="input-surat_pernyataan-edit" type="file" class="form-control" placeholder="">
                         </div>
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="modal-form-3" class="form-label">Bukti Pajak</label>
-                            <img class="img-preview img-fluid" id="preview-bukti_pajak" src="" alt="bukti_pajak">
-                            <input  name="bukti_pajak"  id="input-bukti_pajak-edit" type="file" class="form-control" placeholder="">
+                            <label for="modal-form-3" id="label-bukti_pajak-edit" class="form-label">Bukti Pajak</label>
+                            <input  name="bukti_pajak_edit"  id="input-bukti_pajak-edit" type="file" class="form-control" placeholder="">
                         </div>
                     </div>
                     <!-- END: Modal Body -->
@@ -441,6 +432,116 @@
                     }
                 });
 
+                $('#input-pengantar-edit').on('change',function() {
+                    const file = this.files[0];
+                    if (file) {
+                        let reader = new FileReader();
+                        reader.onload = function (event) {
+                            $('#preview-pengantar-edit')
+                              .attr('src', event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                $('#input-ktp-edit').on('change',function() {
+                    const file = this.files[0];
+                    if (file) {
+                        let reader = new FileReader();
+                        reader.onload = function (event) {
+                            $('#preview-ktp-edit')
+                              .attr('src', event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                $('#input-kk-edit').on('change',function() {
+                    const file = this.files[0];
+                    if (file) {
+                        let reader = new FileReader();
+                        reader.onload = function (event) {
+                            $('#preview-kk-edit')
+                              .attr('src', event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                $('#input-kk_calon-edit').on('change',function() {
+                    const file = this.files[0];
+                    if (file) {
+                        let reader = new FileReader();
+                        reader.onload = function (event) {
+                            $('#preview-kk_calon-edit')
+                              .attr('src', event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                $('#input-foto-edit').on('change',function() {
+                    const file = this.files[0];
+                    if (file) {
+                        let reader = new FileReader();
+                        reader.onload = function (event) {
+                            $('#preview-foto-edit')
+                              .attr('src', event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                $('#input-foto_calon-edit').on('change',function() {
+                    const file = this.files[0];
+                    if (file) {
+                        let reader = new FileReader();
+                        reader.onload = function (event) {
+                            $('#preview-foto_calon-edit')
+                              .attr('src', event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                $('#input-ijazah-edit').on('change',function() {
+                    const file = this.files[0];
+                    if (file) {
+                        let reader = new FileReader();
+                        reader.onload = function (event) {
+                            $('#preview-ijazah-edit')
+                              .attr('src', event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                $('#input-surat_pernyataan-edit').on('change',function() {
+                    const file = this.files[0];
+                    if (file) {
+                        let reader = new FileReader();
+                        reader.onload = function (event) {
+                            $('#preview-surat_pernyataan-edit')
+                              .attr('src', event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                $('#input-bukti_pajak-edit').on('change',function() {
+                    const file = this.files[0];
+                    if (file) {
+                        let reader = new FileReader();
+                        reader.onload = function (event) {
+                            $('#preview-bukti_pajak-edit')
+                              .attr('src', event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+
+
 
 
                 //edit data
@@ -454,11 +555,28 @@
                         dataType: "JSON",
                         success: function(data)
                         {
-                            console.log(data);
-                            $('#pasangan-update-id').val(data.id);
-                           
-                            // $('#pasangan-edit-11').val(data.keluarga_id);
-                            $('#dokumen-nikah-edit-10 option[value="' + data.keluarga_id +'"]').prop("selected", true);
+                            $('#dokumen-nikah-update-id').val(data.id);
+                            $('#dokumen-nikah-edit-1 option[value="' + data.keluarga_id +'"]').prop("selected", true);
+
+                            $('#label-pengantar-edit').html('<img src="storage/' + data.pengantar + '"   id="preview-pengantar-edit" class="img-preview img-fluid">');
+                            $('#label-ktp-edit').html('<img src="storage/' + data.ktp + '" id="preview-ktp-edit" class="img-preview img-fluid">');
+                            $('#label-kk-edit').html('<img src="storage/' + data.kk + '" id="preview-kk-edit" class="img-preview img-fluid">');
+                            $('#label-kk_calon-edit').html('<img src="storage/' + data.kk_calon + '" id="preview-kk_calon-edit" class="img-preview img-fluid">');
+                            $('#label-foto-edit').html('<img src="storage/' + data.foto + '" id="preview-foto-edit" class="img-preview img-fluid">');
+                            $('#label-foto_calon-edit').html('<img src="storage/' + data.foto_calon + '" id="preview-foto_calon-edit" class="img-preview img-fluid">');
+                            $('#label-ijazah-edit').html('<img src="storage/' + data.ijazah + '" id="preview-ijazah-edit" class="img-preview img-fluid">');
+                            $('#label-surat_pernyataan-edit').html('<img src="storage/' + data.surat_pernyataan + '" id="preview-surat_pernyataan-edit" class="img-preview img-fluid">');
+                            $('#label-bukti_pajak-edit').html('<img src="storage/' + data.bukti_pajak + '" id="preview-bukti_pajak-edit" class="img-preview img-fluid">');
+
+                            // $('#input-pengantar-edit').val(data.pengantar);
+                            // $('#input-ktp-edit').val(data.ktp);
+                            // $('#input-kk-edit').val(data.kk);
+                            // $('#input-kk_calon-edit').val(data.kk_calon);
+                            // $('#input-foto-edit').val(data.foto);
+                            // $('#input-foto_calon-edit').val(data.foto_calon);
+                            // $('#input-ijazah-edit').val(data.ijazah);
+                            // $('#input-surat_pernyataan-edit').val(data.surat_pernyataan);
+                            // $('#input-bukti_pajak-edit').val(data.bukti_pajak);
                         }
                     });
                 });
