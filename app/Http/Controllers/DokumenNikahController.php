@@ -14,12 +14,17 @@ class DokumenNikahController extends Controller
         $data_request = $request->all();
         if (\Auth::check() && \Auth::user()->role == 'su'):
             $keluarga = Keluarga::orderBy('user_id', 'desc')->paginate(10);
-            $dokumen = Dokumen_nikah::orderBy('user_id', 'desc')->paginate(10);
+            $dokumen = Dokumen_nikah::select('dokumen_nikahs.*', 'keluargas.id as keluargaID', 'keluargas.nama as nama_keluarga')
+                        ->join('keluargas', 'keluargas.id', '=', 'dokumen_nikahs.keluarga_id')
+                        ->orderBy('keluargas.user_id', 'desc')
+                        ->paginate(10);
         else:
             $keluarga = Keluarga::where('user_id', \Auth::user()->id)->paginate(10);
             if (!empty($keluarga)):
-                $dokumen = Dokumen_nikah::select('dokumen_nikahs.*', 'keluargas.id as keluargaID', 'keluargas.nama as nama_keluarga')->join('keluargas', 'keluargas.id', '=', 'dokumen_nikahs.keluarga_id')
-                            ->where('keluargas.user_id', \Auth::user()->id)->paginate(10);
+                $dokumen = Dokumen_nikah::select('dokumen_nikahs.*', 'keluargas.id as keluargaID', 'keluargas.nama as nama_keluarga')
+                            ->join('keluargas', 'keluargas.id', '=', 'dokumen_nikahs.keluarga_id')
+                            ->where('keluargas.user_id', \Auth::user()->id)
+                            ->paginate(10);
             endif;
         endif;
         return view('app.dokumen_nikah', [
