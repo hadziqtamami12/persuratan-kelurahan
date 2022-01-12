@@ -56,7 +56,8 @@
                                                     <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete
                                                 </a>
                                                 <a class="flex items-center text-theme-11" href="{{ route('pengantarcetak', $item->id) }}" >
-                                                    <i data-feather="printer" class="w-4 h-4 ml-2 mr-1"></i> Cetak
+                                                    <i data-feather="printer" class="w-4 h-4 ml-2 mr-1"></i> 
+                                                    {{ (Auth::user()->role == 'su' ? 'Cetak' : 'Lihat') }}
                                                 </a>
                                             </div>
                                         </td>

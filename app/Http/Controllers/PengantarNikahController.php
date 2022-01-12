@@ -114,10 +114,35 @@ class PengantarNikahController extends Controller
         $ibu = Ibu::where('user_id', $keluarga->user_id)
                      ->first();
         
-        
         view()->share('app.pengantarcetak', ['pengantar'=> $pengantar,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu]);
         $pdf = PDF::loadView('app.pengantarcetak', ['pengantar'=> $pengantar,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu])->setPaper('a4', 'potrait');
         return $pdf->stream('Surat Pengantar Nikah.pdf');
+       
+    }
+
+    public function pengantardetail($id)
+    {
+       
+        $pengantar = Pengantar_nikah::where('id', $id)->first();
+        $pasangan = Pasangan::where('id', $pengantar->pasangan_id)
+                        ->first();
+        $keluarga = Keluarga::where('id', $pengantar->keluarga_id)
+                        ->first();
+        $ayah = Ayah::where('user_id', $keluarga->user_id)
+                     ->first();
+        $ibu = Ibu::where('user_id', $keluarga->user_id)
+                     ->first();
+
+        // dd($keluarga);
+
+        return view('app.pengantardetail', [
+            'pengantar'=> $pengantar,
+            'keluarga' => $keluarga, 
+            'pasangan' => $pasangan, 
+            'ayah' => $ayah, 
+            'ibu' => $ibu,
+        ]);
+       
     }
 
     /**

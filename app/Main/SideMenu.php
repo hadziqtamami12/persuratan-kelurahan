@@ -139,9 +139,19 @@ class SideMenu
                 ],
                 'title' => 'Data Kematian'
             ],
+
+            'Rekap Data' => [
+                'icon' => 'users',
+                'route_name' => 'rekap',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Rekap Data'
+            ],
             
 
             'devider',
+            
             'users' => [
                 'icon' => 'users',
                 'route_name' => 'user',

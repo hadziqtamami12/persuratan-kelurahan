@@ -85,6 +85,7 @@ Route::middleware('auth')->group(function() {
         Route::POST('pengantarupdate', [PengantarNikahController::class, 'pengantarupdate'])->name('pengantarupdate');
         Route::get('pengantardelete/{id}', [PengantarNikahController::class, 'destroy'])->name('pengantardelete');
         Route::get('pengantarcetak/{id}', [PengantarNikahController::class, 'pengantarcetak'])->name('pengantarcetak');
+        Route::get('pengantardetail/{id}', [PengantarNikahController::class, 'pengantardetail'])->name('pengantardetail');
 
         //Data Permohonan Nikah Manage
         Route::get('permohonan', [PermohonanNikahController::class, 'index'])->name('permohonan');
@@ -154,6 +155,9 @@ Route::middleware('auth')->group(function() {
         Route::get('useredit', [UserController::class, 'edit'])->name('useredit');
         Route::post('userupdate', [UserController::class, 'update'])->name('userupdate');
         Route::get('userdelete/{id}', [UserController::class, 'destroy'])->name('userdelete');
+        Route::get('filterdashboard', [DashboardController::class, 'filterdashboard'])->name('filterdashboard');
+        Route::get('rekap', [DashboardController::class, 'rekap'])->name('rekap');
+        Route::get('rekapcetak', [DashboardController::class, 'rekapcetak'])->name('rekapcetak');
 
     });
 

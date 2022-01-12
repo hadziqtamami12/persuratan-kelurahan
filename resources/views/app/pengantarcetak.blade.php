@@ -199,10 +199,6 @@
                             <td>:</td>
                         </tr>
                         <tr>
-                            <td colspan="2">Jenis Kelamin</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
                             <td colspan="2">Tempat dan tanggal lahir</td>
                             <td>:</td>
                         </tr>
@@ -231,10 +227,6 @@
                         </tr>
                         <tr>
                             <td colspan="2">Nomor Induk Kependudukan (NIK)</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Jenis Kelamin</td>
                             <td>:</td>
                         </tr>
                         <tr>
@@ -313,9 +305,6 @@
                             <td> {{ $ayah->nik ? $ayah->nik : 'belum diisi' }}</td>
                         </tr>
                         <tr>
-                            <td> {{ $ayah->jenkel ? $ayah->jenkel : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
                             <td> {{ $ayah->tempat_lahir . ', ' . $ayah->tanggal_lahir ? $ayah->tempat_lahir . ', ' . $ayah->tanggal_lahir : 'belum diisi' }}</td>
                         </tr>
                         <tr>
@@ -338,9 +327,6 @@
                         </tr>
                         <tr>
                             <td> {{ $ibu->nik ? $ibu->nik : 'belum diisi' }}</td>
-                        </tr>
-                        <tr>
-                            <td> {{ $ibu->jenkel ? $ibu->jenkel : 'belum diisi' }}</td>
                         </tr>
                         <tr>
                             <td> {{ $ibu->tempat_lahir . ', ' . $ibu->tanggal_lahir ? $ibu->tempat_lahir . ', ' . $ibu->tanggal_lahir : 'belum diisi' }}</td>

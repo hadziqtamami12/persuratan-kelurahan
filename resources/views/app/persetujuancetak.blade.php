@@ -216,31 +216,31 @@
                     <div class="box-right w-50 ml-auto">
                         <table>
                             <tr>
-                                <td> {{ $keluarga->nama ? $keluarga->nama : 'belum diisi' }}</td>
+                                <td> {{ $suami->nama ? $suami->nama : 'belum diisi' }}</td>
                             </tr>
                             <tr>
                                 <td> {{ $ayah->nama ? $ayah->nama : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $keluarga->nik ? $keluarga->nik : 'belum diisi' }}</td>
+                                <td> {{ $suami->nik ? $suami->nik : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $keluarga->jenkel ? $keluarga->jenkel : 'belum diisi' }}</td>
+                                <td> {{ $suami->jenkel ? $suami->jenkel : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $keluarga->tempat_lahir . ', ' . $keluarga->tanggal_lahir ? $keluarga->tempat_lahir . ', ' . $keluarga->tanggal_lahir : 'belum diisi' }}</td>
+                                <td> {{ $suami->tempat_lahir . ', ' . $suami->tanggal_lahir ? $suami->tempat_lahir . ', ' . $suami->tanggal_lahir : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $keluarga->kewarganegaraan ? $keluarga->kewarganegaraan : 'belum diisi' }}</td>
+                                <td> {{ $suami->kewarganegaraan ? $suami->kewarganegaraan : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $keluarga->agama ? $keluarga->agama : 'belum diisi' }}</td>
+                                <td> {{ $suami->agama ? $suami->agama : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $keluarga->pekerjaan ? $keluarga->pekerjaan : 'belum diisi' }}</td>
+                                <td> {{ $suami->pekerjaan ? $suami->pekerjaan : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $keluarga->alamat ? $keluarga->alamat : 'belum diisi' }}</td>
+                                <td> {{ $suami->alamat ? $suami->alamat : 'belum diisi' }}</td>
                             </tr>
                         </table>
                     </div>
@@ -302,31 +302,31 @@
                     <div class="box-right w-50 ml-auto">
                         <table>
                             <tr>
-                                <td> {{ $pasangan->nama ? $pasangan->nama : 'belum diisi' }}</td>
+                                <td> {{ $istri->nama ? $istri->nama : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $pasangan->bin ? $pasangan->bin : 'belum diisi' }}</td>
+                                <td> {{ $istri->bin ? $istri->bin : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $pasangan->nik ? $pasangan->nik : 'belum diisi' }}</td>
+                                <td> {{ $istri->nik ? $istri->nik : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $pasangan->jenkel ? $pasangan->jenkel : 'belum diisi' }}</td>
+                                <td> {{ $istri->jenkel ? $istri->jenkel : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $pasangan->tempat_lahir . ', ' . $pasangan->tanggal_lahir ? $pasangan->tempat_lahir . ', ' . $pasangan->tanggal_lahir : 'belum diisi' }}</td>
+                                <td> {{ $istri->tempat_lahir . ', ' . $istri->tanggal_lahir ? $istri->tempat_lahir . ', ' . $istri->tanggal_lahir : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $pasangan->kewarganegaraan ? $pasangan->kewarganegaraan : 'belum diisi' }}</td>
+                                <td> {{ $istri->kewarganegaraan ? $istri->kewarganegaraan : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $pasangan->agama ? $pasangan->agama : 'belum diisi' }}</td>
+                                <td> {{ $istri->agama ? $istri->agama : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $pasangan->pekerjaan ? $pasangan->pekerjaan : 'belum diisi' }}</td>
+                                <td> {{ $istri->pekerjaan ? $istri->pekerjaan : 'belum diisi' }}</td>
                             </tr>
                             <tr>
-                                <td> {{ $pasangan->alamat ? $pasangan->alamat : 'belum diisi' }}</td>
+                                <td> {{ $istri->alamat ? $istri->alamat : 'belum diisi' }}</td>
                             </tr>
                         </table>
                     </div>

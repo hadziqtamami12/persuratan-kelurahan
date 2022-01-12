@@ -13,6 +13,7 @@ use App\Models\Izin_nikah;
 use App\Models\Kematian_pasangan;
 use App\Models\Kelahiran;
 use App\Models\Kematian;
+use PDF;
 
 
 
@@ -28,17 +29,25 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
 
+        $surat = array("Surat Pengantar","Surat Permohonan","Surat Persetujuan","Surat Izin","Surat Kematian Pasangan","Surat Kelahiran","Surat Kematian");
+        $bulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+
         if (\Auth::check() && \Auth::user()->role == 'su'):
-            $keluarga = Keluarga::whereMonth('created_at', date('m'));
-            $ayah = Ayah::whereMonth('created_at', date('m'));
-            $ibu = Ibu::whereMonth('created_at', date('m'));
-            $pengantar = Pengantar_nikah::whereMonth('created_at', date('m'));
-            $permohonan = Permohonan_nikah::whereMonth('created_at', date('m'));
-            $persetujuan = Persetujuan_nikah::whereMonth('created_at', date('m'));
-            $izin = Izin_nikah::whereMonth('created_at', date('m'));
-            $kematian_pasangan = Kematian_pasangan::whereMonth('created_at', date('m'));
-            $kelahiran = Kelahiran::whereMonth('created_at', date('m'));
-            $kematian = Kematian::whereMonth('created_at', date('m'));
+            if ($request->filter_bulan != null):
+                $filter_bulan = $request->filter_bulan;
+            else:
+                $filter_bulan = date('m');
+            endif;
+            $keluarga = Keluarga::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $ayah = Ayah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $ibu = Ibu::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $pengantar = Pengantar_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $permohonan = Permohonan_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $persetujuan = Persetujuan_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $izin = Izin_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $kematian_pasangan = Kematian_pasangan::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $kelahiran = Kelahiran::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $kematian = Kematian::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
         else:
             $keluarga = Keluarga::where('user_id', \Auth::user()->id);
             $ayah = Ayah::where('user_id', \Auth::user()->id)->get();
@@ -63,10 +72,123 @@ class DashboardController extends Controller
             'ayah' => $ayah,
             'ibu' => $ibu,
             'kematian' => $kematian,
+            'bulan' => $bulan,
+            'surat' => $surat,
         ]);
 
+    }
+
+    public function rekap(Request $request)
+    {
+
+        $surat = array("Surat Pengantar","Surat Permohonan","Surat Persetujuan","Surat Izin","Surat Kematian Pasangan","Surat Kelahiran","Surat Kematian");
+        $bulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+
+        if (\Auth::check() && \Auth::user()->role == 'su'):
+            if ($request->filter_bulan != null):
+                $filter_bulan = $request->filter_bulan;
+            else:
+                $filter_bulan = date('m');
+            endif;
+            $keluarga = Keluarga::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $ayah = Ayah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $ibu = Ibu::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $pengantar = Pengantar_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $permohonan = Permohonan_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $persetujuan = Persetujuan_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $izin = Izin_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $kematian_pasangan = Kematian_pasangan::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $kelahiran = Kelahiran::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
+            $kematian = Kematian::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->get();
         
-        
+        endif;
+
+        return view('app.rekap',  [
+            'pengantar' => $pengantar,
+            'permohonan' => $permohonan,
+            'persetujuan' => $persetujuan,
+            'izin' => $izin,
+            'kematian_pasangan' => $kematian_pasangan,
+            'kelahiran' => $kelahiran,
+            'keluarga' => $keluarga,
+            'ayah' => $ayah,
+            'ibu' => $ibu,
+            'kematian' => $kematian,
+            'bulan' => $bulan,
+            'surat' => $surat,
+        ]);
+
+    }
+
+
+    public function filterdashboard(Request $request)
+    {
+        if (\Auth::check() && \Auth::user()->role == 'su'):
+            if ($request->filter_bulan != null):
+                $filter_bulan = $request->filter_bulan;
+            else:
+                $filter_bulan = date('m');
+            endif;
+            $pengantar = Pengantar_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+            $permohonan = Permohonan_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+            $persetujuan = Persetujuan_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+            $izin = Izin_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+            $kematian_pasangan = Kematian_pasangan::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+            $kelahiran = Kelahiran::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+            $kematian = Kematian::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+            $data = array($pengantar, $permohonan, $persetujuan, $izin, $kematian_pasangan, $kelahiran, $kematian);
+        endif;
+
+        // dd($pengantar);
+
+        echo json_encode($data);
+    }
+
+    public function rekapcetak(Request $request)
+    {
+        $surat = array("Surat Pengantar","Surat Permohonan","Surat Persetujuan","Surat Izin","Surat Kematian Pasangan","Surat Kelahiran","Surat Kematian");
+        $bulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+
+            foreach ($bulan as $b => $bulans):
+                $filter_bulan = $b+1;
+                $pengantar = Pengantar_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+                $permohonan = Permohonan_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+                $persetujuan = Persetujuan_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+                $izin = Izin_nikah::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+                $kematian_pasangan = Kematian_pasangan::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+                $kelahiran = Kelahiran::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+                $kematian = Kematian::whereMonth('created_at', $filter_bulan)->whereYear('created_at', date('Y'))->count('id');
+                $data[$b] = array($pengantar, $permohonan, $persetujuan, $izin, $kematian_pasangan, $kelahiran, $kematian);
+            endforeach;
+
+            // dd($data);
+
+
+        view()->share('app.rekapcetak', [
+                    'pengantar' => $pengantar,
+                    'permohonan' => $permohonan,
+                    'persetujuan' => $persetujuan,
+                    'izin' => $izin,
+                    'kematian_pasangan' => $kematian_pasangan,
+                    'kelahiran' => $kelahiran,
+                    'kematian' => $kematian,
+                    'bulan' => $bulan,
+                    'surat' => $surat,
+                    'data' => $data,
+                    ]);
+        $pdf = PDF::loadView('app.rekapcetak', [
+                    'pengantar' => $pengantar,
+                    'permohonan' => $permohonan,
+                    'persetujuan' => $persetujuan,
+                    'izin' => $izin,
+                    'kematian_pasangan' => $kematian_pasangan,
+                    'kelahiran' => $kelahiran,
+                    'kematian' => $kematian,
+                    'bulan' => $bulan,
+                    'surat' => $surat,
+                    'data' => $data,
+                    ])->setPaper('a4', 'potrait');
+        return $pdf->stream('Rekap Surat Tahun ' . date('Y'). '.pdf');
     }
 
     /**

@@ -114,10 +114,18 @@ class PersetujuanNikahController extends Controller
                      ->first();
         $ibu = Ibu::where('user_id', $keluarga->user_id)
                      ->first();
+
+        if($keluarga->jenkel == 'laki-laki'):
+            $suami = $keluarga;
+            $istri = $pasangan;
+        else:
+            $suami = $pasangan;
+            $istri = $keluarga;
+        endif;
         
         
-        view()->share('app.persetujuancetak', ['persetujuan'=> $persetujuan,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu]);
-        $pdf = PDF::loadView('app.persetujuancetak', ['persetujuan'=> $persetujuan,'keluarga' => $keluarga, 'pasangan' => $pasangan, 'ayah' => $ayah, 'ibu' => $ibu])->setPaper('a4', 'potrait');
+        view()->share('app.persetujuancetak', ['persetujuan'=> $persetujuan,'suami' => $suami, 'istri' => $istri, 'ayah' => $ayah, 'ibu' => $ibu]);
+        $pdf = PDF::loadView('app.persetujuancetak', ['persetujuan'=> $persetujuan,'suami' => $suami, 'istri' => $istri, 'ayah' => $ayah, 'ibu' => $ibu])->setPaper('a4', 'potrait');
         return $pdf->stream('Surat Persetujuan Nikah.pdf');
     }
 
