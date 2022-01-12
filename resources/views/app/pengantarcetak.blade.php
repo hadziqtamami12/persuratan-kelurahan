@@ -21,6 +21,9 @@
             border-collapse : collapse;
             /* border-spacing: 0; */
         }
+        .absolute{
+            position: absolute;
+        }
         .box{
             display : flex;
             max-height: 700px;
@@ -76,6 +79,9 @@
         .line-height-3{
             line-height : 3;
         }
+        .line-height-7{
+            line-height : 7;
+        }
         
         .text-right{
             text-align: right;
@@ -95,8 +101,20 @@
         .mt-10{
             margin-top: 10px;
         }
+
         .mb-10{
             margin-bottom: 10px;
+        }
+
+        .foto{
+            margin-top: 570px;
+            margin-left: 60px;
+            position: absolute;
+            border: 1px solid black;
+            padding-top: 50px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 50px;
         }
         
     </style>
@@ -128,7 +146,7 @@
 
         <div class="box-100">
             <h3 class="text-line text-center">PENGANTAR NIKAH</h3>
-            <h3 class="text-center line-height-0">Nomor :</h3>
+            <h3 class="text-center line-height-0">Nomor : {{ '474.2'.'/'.str_pad($pengantar->id, 2, "0", STR_PAD_LEFT).'/429.502/'. date('Y') }} </h3>
             <p class="text-left-5 mt-10">Yang bertanda tangan di bawah ini menjelaskan dengan sesungguhnya bahwa :</p>
             <div class="box">
                 <div class="box-left w-100">
@@ -257,6 +275,9 @@
         sebagaimana mestinya.</td>
                         </tr>
                     </table>
+                </div>
+                <div class="foto">
+                    <h4>Foto 4x6</h4>
                 </div>
                 <div class="box-right w-50 ml-auto">
                     <table>
