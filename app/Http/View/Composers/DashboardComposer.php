@@ -22,6 +22,7 @@ class DashboardComposer
      */
     public function compose(View $view)
     {
+        if (\Auth::check()):
         
             $dashboard = [
                 'pengantar' => Pengantar_nikah::select('pengantar_nikahs.*', 'pengantar_nikahs.created_at as waktu', 'keluargas.nama as nama', 'keluargas.id')->whereDate('pengantar_nikahs.created_at', date('Y-m-d'))->join('keluargas', 'keluargas.id', '=', 'pengantar_nikahs.keluarga_id')->get(),
@@ -30,7 +31,11 @@ class DashboardComposer
                 'izin' => Izin_nikah::select('izin_nikahs.*', 'izin_nikahs.created_at as waktu', 'keluargas.nama as nama', 'keluargas.id')->whereDate('izin_nikahs.created_at', date('Y-m-d'))->join('keluargas', 'keluargas.id', '=', 'izin_nikahs.keluarga_id')->get(),
                 'kematian_pasangan' => Kematian_pasangan::select('kematian_pasangans.*', 'kematian_pasangans.created_at as waktu', 'keluargas.nama as nama', 'keluargas.id')->whereDate('kematian_pasangans.created_at', date('Y-m-d'))->join('keluargas', 'keluargas.id', '=', 'kematian_pasangans.keluarga_id')->get(),
                 'kelahiran' => Kelahiran::select('kelahirans.*', 'kelahirans.created_at as waktu', 'keluargas.nama as nama', 'keluargas.id')->whereDate('kelahirans.created_at', date('Y-m-d'))->join('keluargas', 'keluargas.id', '=', 'kelahirans.keluarga_id')->get(),
+                'kematian' => Kematian::select('kematians.*', 'kematians.created_at as waktu', 'keluargas.nama as nama', 'keluargas.user_id')->whereDate('kematians.created_at', date('Y-m-d'))->join('keluargas', 'keluargas.user_id', '=', 'kematians.user_id')->get(),
+                'user' => Pengantar_nikah::select('pengantar_nikahs.*', 'pengantar_nikahs.updated_at as waktu', 'keluargas.nama as nama', 'keluargas.id')->join('keluargas', 'keluargas.id', '=', 'pengantar_nikahs.keluarga_id')->where('keluargas.user_id', \Auth::user()->id)->where('pengantar_nikahs.status', '=', 'sudah')->get(),
             ];
         $view->with('dashboard', $dashboard);
+
+        endif;
     }
 }

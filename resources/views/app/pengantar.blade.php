@@ -35,6 +35,9 @@
                                     <th class="text-center whitespace-nowrap">Nama Pasangan</th>
                                     <th class="text-center whitespace-nowrap">NIK</th>
                                     <th class="text-center whitespace-nowrap">Aksi</th>
+                                    @if (Auth::user()->role == 'su')
+                                    <th class="text-center whitespace-nowrap">Status</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,11 +59,21 @@
                                                     <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete
                                                 </a>
                                                 <a class="flex items-center text-theme-11" href="{{ route('pengantarcetak', $item->id) }}" >
-                                                    <i data-feather="printer" class="w-4 h-4 ml-2 mr-1"></i> 
+                                                    <i data-feather="{{ (Auth::user()->role == 'su' ? 'printer' : 'eye') }}" class="w-4 h-4 ml-2 mr-1"></i> 
                                                     {{ (Auth::user()->role == 'su' ? 'Cetak' : 'Lihat') }}
                                                 </a>
                                             </div>
                                         </td>
+                                        @if (Auth::user()->role == 'su')
+                                        <td class="table-report__action w-56">
+                                            <div class="flex justify-center items-center">
+                                                <a class="flex items-center {{ $item->status == 'sudah' ? 'btn btn-success' : 'btn btn-warning' }}" href="{{ $item->status == 'sudah' ? '#' : route('pengantarvalidation', $item->id) }}" >
+                                                    <i data-feather="check-square" class="w-4 h-4 ml-2 mr-1"></i> 
+                                                    {{ $item->status == 'sudah' ? 'Tervalidasi' : 'Validasi' }}
+                                                </a>
+                                            </div>
+                                        </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

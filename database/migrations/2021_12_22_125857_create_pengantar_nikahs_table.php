@@ -17,6 +17,7 @@ class CreatePengantarNikahsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('pasangan_id');
             $table->unsignedBigInteger('keluarga_id');
+            $table->enum('status', ['belum', 'sudah']);
             $table->softDeletes();
             $table->timestamps();
         });

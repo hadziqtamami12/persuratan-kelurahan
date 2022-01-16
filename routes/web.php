@@ -86,6 +86,7 @@ Route::middleware('auth')->group(function() {
         Route::get('pengantardelete/{id}', [PengantarNikahController::class, 'destroy'])->name('pengantardelete');
         Route::get('pengantarcetak/{id}', [PengantarNikahController::class, 'pengantarcetak'])->name('pengantarcetak');
         Route::get('pengantardetail/{id}', [PengantarNikahController::class, 'pengantardetail'])->name('pengantardetail');
+        Route::get('pengantarvalidation/{id}', [PengantarNikahController::class, 'pengantarvalidation'])->name('pengantarvalidation');
 
         //Data Permohonan Nikah Manage
         Route::get('permohonan', [PermohonanNikahController::class, 'index'])->name('permohonan');

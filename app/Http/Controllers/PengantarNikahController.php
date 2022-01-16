@@ -64,6 +64,7 @@ class PengantarNikahController extends Controller
         $pengantar = new Pengantar_nikah;
         $pengantar->pasangan_id = $request->pasangan_id;
         $pengantar->keluarga_id = $data_pasangan->keluarga_id;
+        $pengantar->status = 'belum';
         $pengantar->save();
         // dd($pengantar);
 
@@ -71,6 +72,20 @@ class PengantarNikahController extends Controller
             return redirect()->back()->with(['success' => 'Data pengantar'.$request->input('nama').'berhasil disimpan']);
         }else{
             return redirect()->back()->with(['danger' => 'Data Tidak Terekam!']);
+        }
+    }
+
+    public function pengantarvalidation($id)
+    {
+        $pengantar = Pengantar_nikah::findOrFail($id);
+        $pengantar->status = 'sudah';
+        $pengantar->update();
+
+
+        if($pengantar){
+            return redirect()->back();
+        }else{
+            return redirect()->back();
         }
     }
 
